@@ -4,7 +4,7 @@ public class InputManager : MonoBehaviour {
 
     public float horizontal, vertical;
     public bool jumpPressed, jumpReleased,  firePressed, fireReleased, fireheld, pickupButton;
-    public bool pauseButtonDown = false;
+    public bool pauseButtonDown = false, resetButtonDown = false;
 
 
     private void Update() {
@@ -17,6 +17,7 @@ public class InputManager : MonoBehaviour {
         fireheld = Input.GetMouseButton(0);
         pickupButton = Input.GetKeyDown(KeyCode.E);
         pauseButtonDown = Input.GetKeyDown(KeyCode.Escape);
+        resetButtonDown = Input.GetKeyDown(KeyCode.R);
     }
 
 

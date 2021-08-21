@@ -17,6 +17,7 @@ public class Unit : MonoBehaviour {
                 currentHP = 0;
                 if (onDeath != null) onDeath.Invoke();
             }
+            if (onTakeDamage != null) onTakeDamage.Invoke();
         }
 
 

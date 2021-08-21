@@ -712,10 +712,10 @@ TextureImporter:
     second: colored_transparent_packed_235
   - first:
       213: 2261976124298227055
-    second: colored_transparent_packed_236
+    second: Pot1
   - first:
       213: -1259876739423530405
-    second: colored_transparent_packed_237
+    second: Po2
   - first:
       213: 713072234296389581
     second: colored_transparent_packed_238
@@ -1561,13 +1561,13 @@ TextureImporter:
     second: colored_transparent_packed_518
   - first:
       213: 4823867712944630053
-    second: colored_transparent_packed_519
+    second: HeartEmpty
   - first:
       213: 1458531584214546995
-    second: colored_transparent_packed_520
+    second: HeartHalf
   - first:
       213: -8595708014055669002
-    second: colored_transparent_packed_521
+    second: HeartFull
   - first:
       213: -3255523992555989840
     second: colored_transparent_packed_522
@@ -8236,7 +8236,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: colored_transparent_packed_236
+      name: pot1
       rect:
         serializedVersion: 2
         x: 720
@@ -8257,7 +8257,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: colored_transparent_packed_237
+      name: Pot2
       rect:
         serializedVersion: 2
         x: 736
@@ -14179,7 +14179,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: colored_transparent_packed_519
+      name: HeartEmpty
       rect:
         serializedVersion: 2
         x: 640
@@ -14200,7 +14200,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: colored_transparent_packed_520
+      name: HeartHalf
       rect:
         serializedVersion: 2
         x: 656
@@ -14221,7 +14221,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: colored_transparent_packed_521
+      name: HeartFull
       rect:
         serializedVersion: 2
         x: 672

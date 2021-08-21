@@ -8,7 +8,7 @@ public class RoguelikePlayer : Unit
 {
     public StateMachine<RoguelikePlayer> statemachine;
     public Camera cam;
-    public SpriteRenderer renderer;
+    public SpriteRenderer sRenderer;
     public InputManager manager;
     public Weapon currentWeapon;
     public Transform rightHand;
@@ -20,8 +20,8 @@ public class RoguelikePlayer : Unit
 
     internal void SetPlayerNextScene(string toGoTo) {
 
-      
-           
+
+        if (!canWin) return;
             StartCoroutine(LevelPhaseOut(toGoTo));
        
     }
@@ -30,19 +30,24 @@ public class RoguelikePlayer : Unit
 
 
 
-        yield return new WaitForSeconds(3f);
-
+        yield return new WaitForSeconds(1f);
+        transitioner.EndTransition();
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(toGoTo);
     }
 
-
+   
     public List<Weapon> HoveredWeapons = new List<Weapon>();
     public List<WeaponSlotButton> buttons;
     public float walkSpeed = 5f;
     public WeaponSlotButton slotPrefab;
     public Transform slotGroupingTransform;
-
+    public Transitioner transitioner;
+    public HealthManager healthManager;
     private void Awake() {
+        canWin = true;
+        transitioner.IntroTransition();
+        healthManager.UpdateHP();
         statemachine = new StateMachine<RoguelikePlayer>(new PlayerMoveState(), this);
         weapons = new Weapon[numberOfWeapons];
         buttons = new List<WeaponSlotButton>();
@@ -52,6 +57,13 @@ public class RoguelikePlayer : Unit
             b.gameObject.SetActive(false);
         }
         UpdateWeaponSlotButtons();
+        onTakeDamage += healthManager.UpdateHP;
+        onTakeDamage += FlashForDamage;
+    }
+
+    public void ResetLevel() {
+        StopAllCoroutines();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void Update() {
@@ -64,11 +76,24 @@ public class RoguelikePlayer : Unit
             }
         }
 
+        if (manager.resetButtonDown) {
+            ResetLevel();
+        }
+
         if (GameManager.paused) return;
         statemachine.Update();
     }
 
-   
+    public float pushBackDecreaseSpeed = 5f;
+    [HideInInspector]public Vector2 pushBack;
+    public float lavaPushBack = 10f;
+    public void DecreasePushBack() {
+
+        if (pushBack != Vector2.zero) {
+            pushBack = Vector2.MoveTowards(pushBack, Vector2.zero, Time.deltaTime * pushBackDecreaseSpeed);
+        }
+
+    }
 
     public void UpdateWeaponSlotButtons() {
 
@@ -111,10 +136,43 @@ public class RoguelikePlayer : Unit
             }
 
         }
+    }
 
-        
+    public void FlashForDamage() {
+        canBeHurt = false;
+        StartCoroutine(DamageFlash());
+    }
+
+
+    private IEnumerator DamageFlash() {
+
+        canBeHurt = false;
+
+        for (int i = 0; i < 3; i++) {
+            yield return new WaitForSeconds(0.15f);
+            sRenderer.enabled = false;
+            yield return new WaitForSeconds(0.1f);
+            sRenderer.enabled = true;
+        }
+        canBeHurt = true;
 
     }
+
+    public void Die() {
+        currentHP = 0;
+        canBeHurt = false;
+        statemachine.ChangeState(new DoNothingState());
+        StartCoroutine(Dienumerator());
+    }
+
+    IEnumerator Dienumerator() {
+
+        yield return null;
+
+    }
+
+
+    public bool canWin = true;
 
     internal void EquipWeapon(Weapon toEquip) {
 
@@ -175,9 +233,11 @@ public class RoguelikePlayer : Unit
 
     }
 
+
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.layer == Layers.hurtPlayer) {
             TakeDamage(1);
+            pushBack = -(other.contacts[0].point - new Vector2(transform.position.x, transform.position.y)).normalized * lavaPushBack;
             print("takeDamage");
         }
     }
@@ -206,6 +266,9 @@ public class PlayerMoveState : State<RoguelikePlayer> {
             obj.target.rb.velocity = Vector2.zero;
         }
 
+        obj.target.rb.velocity += obj.target.pushBack;
+        obj.target.DecreasePushBack();
+
 
         if (obj.target.currentWeapon != null) {
 
@@ -226,6 +289,10 @@ public class PlayerMoveState : State<RoguelikePlayer> {
         obj.target.AimRightHand();
 
     }
+
+}
+
+public class DoNothingState : State<RoguelikePlayer> {
 
 }
 

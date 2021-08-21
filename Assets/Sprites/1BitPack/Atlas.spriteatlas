@@ -1275,6 +1275,7 @@ SpriteAtlas:
   - {fileID: -7138461879356057108, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 9142494562876348564, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 6507998947516746931, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
+  - {fileID: 4823867712944630053, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -4260228185191692899, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 8477546804422470144, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -4749646188924539241, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
@@ -1352,6 +1353,7 @@ SpriteAtlas:
   - {fileID: -8939334745783989844, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 253371692108686456, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 9022572488922507344, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
+  - {fileID: -3596959893343028774, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 2561384719646145789, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 620482926026981729, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 6947326032272549646, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
@@ -1422,15 +1424,14 @@ SpriteAtlas:
   - {fileID: -6779373539252224464, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -2061534210157857346, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -3917312826589135557, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
+  - {fileID: 1458531584214546995, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 7586162469061019693, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 8652083719938284496, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 7970464985281474436, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
-  - {fileID: -8595708014055669002, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 4990377579103293928, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -9087041496182717947, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 6402449206770560477, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -3654442636101546449, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
-  - {fileID: 1458531584214546995, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 3981547784015652139, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -7461489805904592140, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -8024065342115049205, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
@@ -1568,6 +1569,7 @@ SpriteAtlas:
   - {fileID: -4673432494450408736, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 6753060430716139054, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 57782427986095217, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
+  - {fileID: -8595708014055669002, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 867780032056906329, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -2553260088717827235, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -4857492116101146048, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
@@ -1990,6 +1992,7 @@ SpriteAtlas:
   - {fileID: -7358025540477522580, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -8416743975856659909, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 6940649021835634163, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
+  - {fileID: -4240701635970954506, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -8740991102951639543, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -2770282955666532256, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -161697261141184651, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
@@ -2042,14 +2045,12 @@ SpriteAtlas:
   - {fileID: -8135518217832610887, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -8762993801760203379, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 3280701438480274162, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
-  - {fileID: -1259876739423530405, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 5867012253630237936, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -1449625838946944884, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 5758971137209684021, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 6660202789375671929, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 3887476818219184706, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 6476300745489939565, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
-  - {fileID: 2261976124298227055, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -7589542269625206088, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -8579171675700148362, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 7643021231159967427, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
@@ -2074,7 +2075,6 @@ SpriteAtlas:
   - {fileID: -202018790837473842, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 8960788054337827618, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -1774614712056784708, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
-  - {fileID: 4823867712944630053, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 3187931578934249546, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: 8742426475807215028, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   - {fileID: -8567923551396430791, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
@@ -3387,6 +3387,7 @@ SpriteAtlas:
   - colored_transparent_packed_62
   - colored_transparent_packed_114
   - colored_transparent_packed_63
+  - HeartEmpty
   - colored_transparent_packed_115
   - colored_transparent_packed_109
   - colored_transparent_packed_64
@@ -3464,6 +3465,7 @@ SpriteAtlas:
   - colored_transparent_packed_34
   - colored_transparent_packed_342
   - colored_transparent_packed_334
+  - Pot2
   - colored_transparent_packed_33
   - colored_transparent_packed_345
   - colored_transparent_packed_335
@@ -3534,15 +3536,14 @@ SpriteAtlas:
   - colored_transparent_packed_208
   - colored_transparent_packed_289
   - colored_transparent_packed_209
+  - HeartHalf
   - colored_transparent_packed_590
   - colored_transparent_packed_284
   - colored_transparent_packed_591
-  - colored_transparent_packed_521
   - colored_transparent_packed_285
   - colored_transparent_packed_299
   - colored_transparent_packed_219
   - colored_transparent_packed_592
-  - colored_transparent_packed_520
   - colored_transparent_packed_286
   - colored_transparent_packed_298
   - colored_transparent_packed_218
@@ -3680,6 +3681,7 @@ SpriteAtlas:
   - colored_transparent_packed_733
   - colored_transparent_packed_723
   - colored_transparent_packed_753
+  - HeartFull
   - colored_transparent_packed_487
   - colored_transparent_packed_497
   - colored_transparent_packed_734
@@ -4102,6 +4104,7 @@ SpriteAtlas:
   - colored_transparent_packed_302
   - colored_transparent_packed_1032
   - colored_transparent_packed_1024
+  - pot1
   - colored_transparent_packed_1033
   - colored_transparent_packed_1023
   - colored_transparent_packed_228
@@ -4154,14 +4157,12 @@ SpriteAtlas:
   - colored_transparent_packed_257
   - colored_transparent_packed_267
   - colored_transparent_packed_227
-  - colored_transparent_packed_237
   - colored_transparent_packed_1017
   - colored_transparent_packed_1007
   - colored_transparent_packed_582
   - colored_transparent_packed_256
   - colored_transparent_packed_264
   - colored_transparent_packed_224
-  - colored_transparent_packed_236
   - colored_transparent_packed_1014
   - colored_transparent_packed_1006
   - colored_transparent_packed_581
@@ -4186,7 +4187,6 @@ SpriteAtlas:
   - colored_transparent_packed_232
   - colored_transparent_packed_1002
   - colored_transparent_packed_585
-  - colored_transparent_packed_519
   - colored_transparent_packed_261
   - colored_transparent_packed_584
   - colored_transparent_packed_589
