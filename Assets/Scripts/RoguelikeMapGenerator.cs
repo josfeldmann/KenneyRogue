@@ -90,13 +90,13 @@ public class RoguelikeMapGenerator : MonoBehaviour
         if (currentPos.x < gridwidth - 1 && !roomGrid[currentPos.x + 1, currentPos.y]) {
             openSpots.Add(currentPos + Vector3Int.right);
         }
-        if (currentPos.x > 1 && !roomGrid[currentPos.x - 1, currentPos.y]) {
+        if (currentPos.x > 0 && !roomGrid[currentPos.x - 1, currentPos.y]) {
             openSpots.Add(currentPos - Vector3Int.right);
         }
         if (currentPos.y < gridheight - 1 && !roomGrid[currentPos.x, currentPos.y + 1]) {
             openSpots.Add(currentPos + Vector3Int.up);
         }
-        if (currentPos.y > 1 && !roomGrid[currentPos.x, currentPos.y - 1]) {
+        if (currentPos.y > 0 && !roomGrid[currentPos.x, currentPos.y - 1]) {
             openSpots.Add(currentPos - Vector3Int.up);
         }
 
@@ -112,13 +112,13 @@ public class RoguelikeMapGenerator : MonoBehaviour
             if (currentPos.x < gridwidth - 1 && !roomGrid[currentPos.x + 1, currentPos.y]) {
                 openSpots.Add(currentPos + Vector3Int.right);
             }
-            if (currentPos.x > 1 && !roomGrid[currentPos.x - 1, currentPos.y]) {
+            if (currentPos.x > 0 && !roomGrid[currentPos.x - 1, currentPos.y]) {
                 openSpots.Add(currentPos - Vector3Int.right);
             }
             if (currentPos.y < gridheight - 1 && !roomGrid[currentPos.x, currentPos.y + 1]) {
                 openSpots.Add(currentPos + Vector3Int.up);
             }
-            if (currentPos.y > 1 && !roomGrid[currentPos.x, currentPos.y - 1]) {
+            if (currentPos.y > 0 && !roomGrid[currentPos.x, currentPos.y - 1]) {
                 openSpots.Add(currentPos - Vector3Int.up);
             }
 
@@ -135,9 +135,9 @@ public class RoguelikeMapGenerator : MonoBehaviour
                     Room rPrefab = null;
                     
                     bool up =  (y + 1) < roomGrid.GetLength(1) && roomGrid[x, y + 1];
-                    bool down = (y - 1) > 0 && roomGrid[x, y - 1];
+                    bool down = y > 0 && roomGrid[x, y - 1];
                     bool right = (x + 1) < roomGrid.GetLength(0) && roomGrid[x + 1, y];
-                    bool left = (x - 1) > 0 && roomGrid[x - 1, y];
+                    bool left = x > 0 && roomGrid[x - 1, y];
 
                     RoomConnectionInfo con = new RoomConnectionInfo(up, down, right, left);
 

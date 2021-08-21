@@ -31,16 +31,16 @@ public class Room : MonoBehaviour {
 
     internal bool CanFit(bool[,] roomGrid, int x, int y) {
 
-        if (topJoin == null && (y+1) < roomGrid.GetLength(1) && roomGrid[x, y + 1]) {
+        if (topJoin == null && (y + 1) < roomGrid.GetLength(1) && roomGrid[x, y + 1]) {
             return false;
         }
-        if (bottomJoin == null && (y - 1) > 0 && roomGrid[x, y - 1]) {
+        if (bottomJoin == null && y > 0 && roomGrid[x, y - 1]) {
             return false;
         }
         if (rightJoin == null && (x + 1) < roomGrid.GetLength(0) && roomGrid[x + 1, y]) {
             return false;
         }
-        if (leftJoin == null && (x - 1) > 0 && roomGrid[x - 1, y]) {
+        if (leftJoin == null && x > 0 && roomGrid[x - 1, y]) {
             return false;
         }
 
