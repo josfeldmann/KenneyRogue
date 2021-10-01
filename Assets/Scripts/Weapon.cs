@@ -5,15 +5,14 @@
 public class Weapon : MonoBehaviour {
 
     public const int notEquippedlayerorder = 1, equippedLayerorder = 3;
-
-
+    public bool flipCorrect = false;
+    public RoguelikePlayer player;
     public Sprite sprite;
     public Collider2D pickupCollider;
-    public AlwaysUpright upright;
     public SpriteRenderer spriteRenderer;
 
     private void Awake() {
-        upright.enabled = true;
+       
     }
 
     public virtual void FireDown() {

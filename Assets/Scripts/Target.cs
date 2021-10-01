@@ -15,6 +15,12 @@ public class Target : MonoBehaviour
 
     }
 
+    private void OnDestroy() {
+        if (isPlayer) {
+            playertargets.Remove(this);
+        }
+    }
+
 
 
 }

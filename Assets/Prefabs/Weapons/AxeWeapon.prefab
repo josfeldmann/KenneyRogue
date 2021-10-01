@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3386432828571251833}
   - component: {fileID: 3386432828571251835}
   - component: {fileID: 3386432828571251834}
-  - component: {fileID: 3386432828571251832}
   m_Layer: 0
   m_Name: AxeWeapon
   m_TagString: Untagged
@@ -30,6 +29,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.25, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931d6866b5698f3459299b107d05659b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   sprite: {fileID: 4722924697536564194, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   pickupCollider: {fileID: 3386432828571251834}
-  upright: {fileID: 3386432828571251832}
   spriteRenderer: {fileID: 3386432828571251835}
 --- !u!212 &3386432828571251835
 SpriteRenderer:
@@ -128,15 +128,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &3386432828571251832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3386432828571251837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aee3655b8adc950498080ffe1d18e7ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

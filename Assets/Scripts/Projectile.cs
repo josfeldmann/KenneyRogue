@@ -26,7 +26,7 @@ public class Projectile : MonoBehaviour
 
             Unit u = collision.gameObject.GetComponent<Unit>();
             u.TakeDamage(damage);
-            u.rb.AddForce((collision.gameObject.transform.position - transform.position).normalized * pushForce);
+           // u.rb.AddForce((collision.gameObject.transform.position - transform.position).normalized * pushForce);
             Destroy(gameObject);
         }
         else if (collision.gameObject.layer == 0) {

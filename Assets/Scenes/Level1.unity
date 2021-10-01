@@ -8838,14 +8838,6 @@ PrefabInstance:
       propertyPath: toGoTo
       value: Level2
       objectReference: {fileID: 0}
-    - target: {fileID: 8924363623963023312, guid: db76f7953c61e18408dbbdb641ac750f, type: 3}
-      propertyPath: lavaPushBack
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 8924363623963023312, guid: db76f7953c61e18408dbbdb641ac750f, type: 3}
-      propertyPath: pushBackDecreaseSpeed
-      value: 45
-      objectReference: {fileID: 0}
     - target: {fileID: 8924363623963023315, guid: db76f7953c61e18408dbbdb641ac750f, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.78125

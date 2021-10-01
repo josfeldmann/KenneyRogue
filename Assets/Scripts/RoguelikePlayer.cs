@@ -12,6 +12,7 @@ public class RoguelikePlayer : Unit
     public InputManager manager;
     public Weapon currentWeapon;
     public Transform rightHand;
+    public AlwaysUpright upright;
 
     public int numberOfWeapons = 3;
     public int currrentWeaponIndex = 0;
@@ -44,8 +45,12 @@ public class RoguelikePlayer : Unit
     public Transform slotGroupingTransform;
     public Transitioner transitioner;
     public HealthManager healthManager;
+    public GameObject pausedPrompt, deathPrompt;
+    public AudioSource lavaHitSound;
     private void Awake() {
         canWin = true;
+        deathPrompt.gameObject.SetActive(false);
+        pausedPrompt.gameObject.SetActive(false);
         transitioner.IntroTransition();
         healthManager.UpdateHP();
         statemachine = new StateMachine<RoguelikePlayer>(new PlayerMoveState(), this);
@@ -59,20 +64,27 @@ public class RoguelikePlayer : Unit
         UpdateWeaponSlotButtons();
         onTakeDamage += healthManager.UpdateHP;
         onTakeDamage += FlashForDamage;
+        onDeath += Die;
     }
 
     public void ResetLevel() {
         StopAllCoroutines();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager .LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    bool canPause = true;
 
     private void Update() {
 
-        if (manager.pauseButtonDown) {
-            if (GameManager.paused) {
-                GameManager.UnPause();
-            } else {
-                GameManager.Pause();
+        if (canPause) {
+            if (manager.pauseButtonDown) {
+                if (GameManager.paused) {
+                    pausedPrompt.gameObject.SetActive(false);
+                    GameManager.UnPause();
+                } else {
+                    GameManager.Pause();
+                    pausedPrompt.gameObject.SetActive(true);
+                }
             }
         }
 
@@ -160,8 +172,16 @@ public class RoguelikePlayer : Unit
 
     public void Die() {
         currentHP = 0;
+        canPause = false;
+        deathPrompt.SetActive(true);
+        pausedPrompt.SetActive(false);
+        GameManager.UnPause();
         canBeHurt = false;
         statemachine.ChangeState(new DoNothingState());
+        if (currentWeapon != null) {
+            currentWeapon.transform.SetParent(transform.parent);
+            
+        }
         StartCoroutine(Dienumerator());
     }
 
@@ -187,13 +207,13 @@ public class RoguelikePlayer : Unit
                 weapons[i].gameObject.SetActive(false);
             }
         }
-
+        toEquip.player = this;
         if (equipToEmpty) {
             weapons[currrentWeaponIndex] = toEquip;
             toEquip.transform.SetParent(rightHand);
             toEquip.transform.localPosition = Vector3.zero;
             toEquip.transform.localRotation = Quaternion.identity;
-            toEquip.upright.enabled = false;
+            
             currentWeapon = toEquip;
             currentWeapon.pickupCollider.enabled = false;
             if (HoveredWeapons.Contains(toEquip)) {
@@ -205,7 +225,7 @@ public class RoguelikePlayer : Unit
             toDetach.transform.SetParent(transform.parent);
             toDetach.pickupCollider.enabled = true;
             toDetach.gameObject.SetActive(true);
-            toDetach.upright.enabled = true;
+            
             if (HoveredWeapons.Contains(toDetach)) {
                     HoveredWeapons.Remove(toDetach);
             }
@@ -214,7 +234,7 @@ public class RoguelikePlayer : Unit
             toEquip.transform.SetParent(rightHand);
             toEquip.transform.localPosition = Vector3.zero;
             toEquip.transform.localRotation = Quaternion.identity;
-            toEquip.upright.enabled = false;
+            
             currentWeapon = toEquip;
             currentWeapon.pickupCollider.enabled = false;
             if (HoveredWeapons.Contains(toEquip)) {
@@ -236,19 +256,34 @@ public class RoguelikePlayer : Unit
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.layer == Layers.hurtPlayer) {
-            TakeDamage(1);
-            pushBack = -(other.contacts[0].point - new Vector2(transform.position.x, transform.position.y)).normalized * lavaPushBack;
-            print("takeDamage");
+            if (canBeHurt) {
+                pushBack = -(other.contacts[0].point - new Vector2(transform.position.x, transform.position.y)).normalized * lavaPushBack;
+                TakeDamage(1);
+                lavaHitSound.Play();
+                print("takeDamage");
+            }
         }
     }
 
 
     public void AimRightHand() {
 
+
+       
+
         Vector3 mousePoint = cam.ScreenToWorldPoint(Input.mousePosition);
         mousePoint.z = 0;
 
         Vector3 dir = (rightHand.position - mousePoint).normalized;
+        if (currentWeapon && currentWeapon.flipCorrect) {
+
+            if (dir.x > 0) {
+                currentWeapon.spriteRenderer.flipY = true;
+            }
+            if (dir.x < 0) {
+                currentWeapon.spriteRenderer.flipY = false;
+            }
+        }
         rightHand.right = -dir;
 
 
@@ -293,7 +328,13 @@ public class PlayerMoveState : State<RoguelikePlayer> {
 }
 
 public class DoNothingState : State<RoguelikePlayer> {
-
+    public override void Update(StateMachine<RoguelikePlayer> obj) {
+        obj.target.rb.velocity = obj.target.pushBack;
+        obj.target.DecreasePushBack();
+        if (obj.target.sRenderer.transform.parent == obj.target.transform &&  obj.target.pushBack == Vector2.zero) {
+            obj.target.sRenderer.transform.SetParent(obj.target.transform.parent);
+        }
+    }
 }
 
 

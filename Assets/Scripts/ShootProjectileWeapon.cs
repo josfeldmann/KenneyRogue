@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ShootProjectileWeapon : Weapon
 {
+
     public float minShotTime =  0.25f;
-    public Transform projectilePoint;
-    public Projectile projectile;
+    public List<ProjectilePoint> projectilePoints;
     public float time = 0;
+    public AudioSource shootSFX;
 
 
     public override void FireDown() {
@@ -20,9 +21,12 @@ public class ShootProjectileWeapon : Weapon
 
     public void ShootLogic() {
         if (Time.time > time) {
-            Projectile p = Instantiate(projectile, projectilePoint.position, projectilePoint.rotation);
-            p.Init();
+            Vector3 vec = player.cam.ScreenToWorldPoint(Input.mousePosition);
+            foreach (ProjectilePoint p in projectilePoints) {
+                p.Fire(vec);
+            }
             time = Time.time + minShotTime;
+            shootSFX.Play();
         }
     }
 

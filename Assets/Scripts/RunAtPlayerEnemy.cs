@@ -56,6 +56,11 @@ public class RunAtPlayerEnemy : Unit
         Destroy(gameObject);
     }
 
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, aggroRange);
+       
+    }
 
 }
 
@@ -63,9 +68,12 @@ public class WaitTillInRange : State<RunAtPlayerEnemy> {
 
     public override void Update(StateMachine<RunAtPlayerEnemy> obj) {
         if (obj.target.target != null) {
+            Debug.Log("wait " + Time.time);
             if (Vector3.Distance(obj.target.transform.position, obj.target.target.transform.position) < obj.target.aggroRange) {
                 obj.ChangeState(new RunAtPlayerRunState());
             }
+        } else {
+            Debug.Log("null");
         }
     }
 
@@ -74,7 +82,7 @@ public class WaitTillInRange : State<RunAtPlayerEnemy> {
 
 public class RunAtPlayerRunState : State<RunAtPlayerEnemy> {
     public override void FixedUpdate(StateMachine<RunAtPlayerEnemy> obj) {
-        obj.target.rb.AddForce((obj.target.target.transform.position - obj.target.transform.position).normalized * obj.target.runSpeed);
+        obj.target.rb.velocity =  ((obj.target.target.transform.position - obj.target.transform.position).normalized * obj.target.runSpeed);
     }
 
     public override void OnCollisionEnter2D(Collision2D col, StateMachine<RunAtPlayerEnemy> obj) {
@@ -91,10 +99,11 @@ public class RunAtPlayerFreezeState : State<RunAtPlayerEnemy> {
     private float endTime = 0;
     public override void Enter(StateMachine<RunAtPlayerEnemy> obj) {
         endTime = Time.time + obj.target.freezeAfterHit;
+        obj.target.rb.velocity = Vector2.zero;
     }
 
     public override void Update(StateMachine<RunAtPlayerEnemy> obj) {
-        if (endTime > Time.time ) {
+        if (endTime  < Time.time ) {
             obj.ChangeState(new RunAtPlayerRunState());
         }
     }
