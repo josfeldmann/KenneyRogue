@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RoguelikePlayer : Unit
+public class OldRoguelikePlayer : Unit
 {
-    public StateMachine<RoguelikePlayer> statemachine;
+    public StateMachine<OldRoguelikePlayer> statemachine;
     public Camera cam;
     public SpriteRenderer sRenderer;
     public InputManager manager;
@@ -17,7 +17,7 @@ public class RoguelikePlayer : Unit
     public int numberOfWeapons = 3;
     public int currrentWeaponIndex = 0;
     public Weapon[] weapons = new Weapon[3];
-
+    public LayerMask enemyTargettingLayer;
 
     internal void SetPlayerNextScene(string toGoTo) {
 
@@ -53,7 +53,7 @@ public class RoguelikePlayer : Unit
         pausedPrompt.gameObject.SetActive(false);
         transitioner.IntroTransition();
         healthManager.UpdateHP();
-        statemachine = new StateMachine<RoguelikePlayer>(new PlayerMoveState(), this);
+        statemachine = new StateMachine<OldRoguelikePlayer>(new PlayerMoveState(), this);
         weapons = new Weapon[numberOfWeapons];
         buttons = new List<WeaponSlotButton>();
         for (int i = 0; i < numberOfWeapons; i++) {
@@ -197,9 +197,10 @@ public class RoguelikePlayer : Unit
     internal void EquipWeapon(Weapon toEquip) {
 
         bool equipToEmpty = false;
-        
 
-        for (int i = 0; i < 3; i++) {
+        toEquip.SetTargetLayer(enemyTargettingLayer);
+
+        for (int i = 0; i < numberOfWeapons; i++) {
             if (weapons[i] == null) {
                 equipToEmpty = true;
                 currrentWeaponIndex = i;
@@ -207,7 +208,7 @@ public class RoguelikePlayer : Unit
                 weapons[i].gameObject.SetActive(false);
             }
         }
-        toEquip.player = this;
+        //toEquip.player = this;
         if (equipToEmpty) {
             weapons[currrentWeaponIndex] = toEquip;
             toEquip.transform.SetParent(rightHand);
@@ -292,9 +293,9 @@ public class RoguelikePlayer : Unit
 }
 
 
-public class PlayerMoveState : State<RoguelikePlayer> {
+public class PlayerMoveState : State<OldRoguelikePlayer> {
 
-    public override void Update(StateMachine<RoguelikePlayer> obj) {
+    public override void Update(StateMachine<OldRoguelikePlayer> obj) {
         if (obj.target.manager.horizontal != 0 || obj.target.manager.vertical != 0) {
             obj.target.rb.velocity = new Vector2(obj.target.manager.horizontal, obj.target.manager.vertical) * obj.target.walkSpeed;
         } else {
@@ -327,8 +328,8 @@ public class PlayerMoveState : State<RoguelikePlayer> {
 
 }
 
-public class DoNothingState : State<RoguelikePlayer> {
-    public override void Update(StateMachine<RoguelikePlayer> obj) {
+public class DoNothingState : State<OldRoguelikePlayer> {
+    public override void Update(StateMachine<OldRoguelikePlayer> obj) {
         obj.target.rb.velocity = obj.target.pushBack;
         obj.target.DecreasePushBack();
         if (obj.target.sRenderer.transform.parent == obj.target.transform &&  obj.target.pushBack == Vector2.zero) {

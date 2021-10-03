@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c07d292783f2d84c850ebd00d237aa6, type: 3}
+  m_Name: GoblinRace
+  m_EditorClassIdentifier: 
+  raceKey: goblin
+  raceName: Goblin
+  raceSprite: {fileID: -5601523589100708130, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
+  racialStats:
+    maxHP: 100
+    attackDamage: 10
+    attackSpeed: 10
+    magicDamage: 10
+    moveSpeed: 100
+    coolDownReduction: 0
+  racialAbility: {fileID: 0}

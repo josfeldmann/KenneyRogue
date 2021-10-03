@@ -17,7 +17,7 @@ public class HealthManager : MonoBehaviour
 
 
         if (attachedUnit.maxHp % 2 == 1) {
-            Debug.LogError("MaxHP should be divisible by 2");
+           
         }
 
         for (int i = 0; i < attachedUnit.maxHp / 2; i++) {

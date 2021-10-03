@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpriteWord : MonoBehaviour {
 
 
-    public const float pixelIncrement = 0.03125f;
+    public const float pixelIncrement = 0.06250f;
     public TextAlignment alignment = TextAlignment.Left;
     public string setString = "123";
     public static SpriteRenderer rendererprefab;

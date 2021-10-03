@@ -18,7 +18,7 @@ public class LevelGoal : MonoBehaviour
 
         if (collision.gameObject.layer == Layers.player) {
             if (!done) {
-                RoguelikePlayer r = collision.GetComponent<RoguelikePlayer>();
+                OldRoguelikePlayer r = collision.GetComponent<OldRoguelikePlayer>();
                 r.SetPlayerNextScene(toGoTo);
                 collider.enabled = false;
                 done = true;

@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 63e56a9067b789d4cb189d65e6084c05
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Kenney
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 961545ca37ee1ac49ae4bce69d789a25, type: 3}
+  - {fileID: 12800000, guid: a54e60be9db5819489ab3f5b134108c1, type: 3}
+  - {fileID: 12800000, guid: f1532457045dac24ab6d6b55e5661a47, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

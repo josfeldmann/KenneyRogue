@@ -10,6 +10,11 @@ public class ShootProjectileWeapon : Weapon
     public float time = 0;
     public AudioSource shootSFX;
 
+    public override void SetTargetLayer(LayerMask mask) {
+        foreach (ProjectilePoint p in projectilePoints) {
+            p.SetMask(mask);
+        }
+    }
 
     public override void FireDown() {
         ShootLogic();
@@ -18,6 +23,8 @@ public class ShootProjectileWeapon : Weapon
     public override void FireHeld() {
         ShootLogic();
     }
+
+    
 
     public void ShootLogic() {
         if (Time.time > time) {

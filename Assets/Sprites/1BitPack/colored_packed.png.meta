@@ -3215,7 +3215,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -3270,6 +3270,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -25472,7 +25484,7 @@ TextureImporter:
     nameFileIdTable:
       colored_packed_311: -3683240422434730469
       colored_packed_327: -6198502043902462585
-      colored_packed_850: 7095131794607059879
+      colored_packed_418: 6736187171083086253
       colored_packed_685: -1768053643100308625
       colored_packed_474: 5540222026353356624
       colored_packed_204: 4963387116878946040
@@ -25537,12 +25549,12 @@ TextureImporter:
       colored_packed_804: 8416581360979167742
       colored_packed_143: -2899212241763600531
       colored_packed_166: 3844829320226646770
-      colored_packed_167: -7650611642362680126
       colored_packed_978: 3813603553629697382
+      colored_packed_167: -7650611642362680126
       colored_packed_971: 1690121570905814122
       colored_packed_457: 4262982031985128679
-      colored_packed_151: 23078067446311196
       colored_packed_903: 7806320350115116691
+      colored_packed_151: 23078067446311196
       colored_packed_830: -5700070534099014391
       colored_packed_867: 8019477932259006135
       colored_packed_274: 8738708913878164498
@@ -25591,10 +25603,10 @@ TextureImporter:
       colored_packed_930: -4303993182126233253
       colored_packed_762: 4281440306068263766
       colored_packed_899: -20880541850560774
-      colored_packed_140: 8999422459923905090
+      colored_packed_863: 1672197890187935356
       colored_packed_52: -8915819088472205766
       colored_packed_231: 8111249970005625656
-      colored_packed_863: 1672197890187935356
+      colored_packed_140: 8999422459923905090
       colored_packed_940: -3212240244312852453
       colored_packed_610: -6617414509443996791
       colored_packed_1021: 2678418246141311534
@@ -25609,14 +25621,14 @@ TextureImporter:
       colored_packed_250: -9010524020015655674
       colored_packed_499: 7603140224264646975
       colored_packed_487: 8147625887961204017
-      colored_packed_658: -3618769469041373301
+      colored_packed_920: 3466028468442473540
       colored_packed_772: -5293960400233205932
+      colored_packed_658: -3618769469041373301
       colored_packed_719: -2769302485333891135
       colored_packed_973: 8940261897241433298
       colored_packed_90: -6101342466439743915
-      colored_packed_306: -1268737038007128369
       colored_packed_836: 8950661857353391283
-      colored_packed_920: 3466028468442473540
+      colored_packed_306: -1268737038007128369
       colored_packed_997: 5529539048480883327
       colored_packed_1022: 1758942489284309879
       colored_packed_691: -1687671859494289891
@@ -25629,10 +25641,10 @@ TextureImporter:
       colored_packed_912: -1698976551018737680
       colored_packed_291: -3369285671314068917
       colored_packed_919: 5077942151393415643
+      colored_packed_929: 568385125251900409
+      colored_packed_1033: -4547541487368350614
       colored_packed_530: -7780968676573970127
       colored_packed_801: -2130854740169938172
-      colored_packed_1033: -4547541487368350614
-      colored_packed_929: 568385125251900409
       colored_packed_139: 6776372469957967062
       colored_packed_778: 4541014665362458020
       colored_packed_939: 4780411210843371792
@@ -25728,15 +25740,15 @@ TextureImporter:
       colored_packed_441: -9049743426902814276
       colored_packed_134: 3801260131329424895
       colored_packed_194: 2228700830805935646
-      colored_packed_191: -2886531434920454098
       colored_packed_557: 7436972703361599216
-      colored_packed_794: 6729424251530745751
+      colored_packed_191: -2886531434920454098
       colored_packed_158: 4166141829773725776
       colored_packed_659: -735324694462344091
       colored_packed_245: -1760750867088903757
       colored_packed_79: -3140456814997213098
       colored_packed_148: -7629355732802051070
       colored_packed_436: 3823305629220262980
+      colored_packed_794: 6729424251530745751
       colored_packed_451: 930034049165630593
       colored_packed_689: -7590822563004460122
       colored_packed_622: 2953452508846063123
@@ -25754,8 +25766,8 @@ TextureImporter:
       colored_packed_729: 8169813475701576978
       colored_packed_901: 7857434269818541520
       colored_packed_199: -666518449614896644
-      colored_packed_569: 1234725409063333286
       colored_packed_588: 5318572097999966731
+      colored_packed_569: 1234725409063333286
       colored_packed_816: 7343424099589100402
       colored_packed_546: -2103619482320811382
       colored_packed_40: 2546865544735757821
@@ -25970,12 +25982,12 @@ TextureImporter:
       colored_packed_841: 577714439673552512
       colored_packed_339: -5885964622034804216
       colored_packed_292: -5033117510556329907
+      colored_packed_333: 3571034078020712203
       colored_packed_654: 7870175964477510807
       colored_packed_107: -1196057429200011090
       colored_packed_417: -4326990529115362675
       colored_packed_649: 2620095162985784127
       colored_packed_751: 6813058937202720017
-      colored_packed_333: 3571034078020712203
       colored_packed_21: 4830702106278807286
       colored_packed_985: -430727754924452548
       colored_packed_1047: 4199280711339304053
@@ -25993,8 +26005,8 @@ TextureImporter:
       colored_packed_84: 871601133509221052
       colored_packed_1048: -6932615138617066289
       colored_packed_88: -8753461603174717749
-      colored_packed_336: 2483981321723087222
       colored_packed_321: -1949953207602394832
+      colored_packed_336: 2483981321723087222
       colored_packed_672: -8940847804719780806
       colored_packed_17: -112435054898523526
       colored_packed_243: 3338949688231205244
@@ -26020,8 +26032,8 @@ TextureImporter:
       colored_packed_1004: 6162065882958560247
       colored_packed_290: 1819834081666363043
       colored_packed_513: -3685359437434764771
-      colored_packed_638: -1750760828849696187
       colored_packed_933: -4916357349505209796
+      colored_packed_638: -1750760828849696187
       colored_packed_566: 4299327325813272890
       colored_packed_550: -7503450024858469412
       colored_packed_962: -8294161654300086059
@@ -26031,21 +26043,21 @@ TextureImporter:
       colored_packed_835: -1933351086513377420
       colored_packed_519: 2804376617299448350
       colored_packed_534: 264953432101636185
-      colored_packed_633: 160299291312193297
-      colored_packed_714: 67464062766931560
       colored_packed_866: 3601838481954906485
+      colored_packed_714: 67464062766931560
+      colored_packed_633: 160299291312193297
       colored_packed_1023: -3046194781694050330
       colored_packed_563: -8937306386334573005
       colored_packed_228: 313540494590164164
       colored_packed_298: 7726219780465724400
       colored_packed_387: -6484125172859414377
       colored_packed_109: 4347235101479212446
-      colored_packed_251: -5765535772017349458
+      colored_packed_725: 3918893071268111539
       colored_packed_152: 5155049077765936259
       colored_packed_618: 1470923875070562410
       colored_packed_147: -1127437883702800898
       colored_packed_521: -8727645360431690648
-      colored_packed_725: 3918893071268111539
+      colored_packed_251: -5765535772017349458
       colored_packed_743: -8705997854504595747
       colored_packed_848: -8726201407146675806
       colored_packed_806: -3234713383120526071
@@ -26053,9 +26065,9 @@ TextureImporter:
       colored_packed_576: 2387661673506034214
       colored_packed_486: -7518778690022182877
       colored_packed_248: -6785714091601767461
-      colored_packed_391: -6112464316222679451
-      colored_packed_200: -6091253401662176608
       colored_packed_560: -8752661596341395426
+      colored_packed_200: -6091253401662176608
+      colored_packed_391: -6112464316222679451
       colored_packed_488: 5628467916950275021
       colored_packed_430: -5521045682681430589
       colored_packed_275: 352183640590658460
@@ -26064,10 +26076,10 @@ TextureImporter:
       colored_packed_616: 1825377801898254938
       colored_packed_136: 6385110113824624663
       colored_packed_227: 4062158757393843957
-      colored_packed_862: -8801767477021171843
+      colored_packed_932: -2303441447935928737
       colored_packed_91: -4191260064585126408
       colored_packed_205: -1757238475697115132
-      colored_packed_932: -2303441447935928737
+      colored_packed_862: -8801767477021171843
       colored_packed_116: -1128770418576078323
       colored_packed_2: -2029492779849201237
       colored_packed_433: -1563798378206710518
@@ -26089,11 +26101,11 @@ TextureImporter:
       colored_packed_640: 239930961573797137
       colored_packed_542: 7488721649739393669
       colored_packed_10: -1277563027065867677
-      colored_packed_535: 6164658055109221336
-      colored_packed_111: -6051246443986868817
-      colored_packed_740: -6344231537110685697
       colored_packed_629: -4054811565249048951
+      colored_packed_111: -6051246443986868817
+      colored_packed_535: 6164658055109221336
       colored_packed_156: -3568423421674951013
+      colored_packed_740: -6344231537110685697
       colored_packed_748: 461658762454775714
       colored_packed_580: -4604221000875997771
       colored_packed_212: 2762082066176565780
@@ -26143,11 +26155,11 @@ TextureImporter:
       colored_packed_193: 8981944872433207255
       colored_packed_1044: -1927574678633131208
       colored_packed_886: -5750833683175654283
-      colored_packed_696: -5479082820980333859
+      colored_packed_1019: -112666972282162933
       colored_packed_346: -8960355686018227784
       colored_packed_281: 5700017231026708583
       colored_packed_837: -2925106879642991101
-      colored_packed_1019: -112666972282162933
+      colored_packed_696: -5479082820980333859
       colored_packed_593: 1988202949123463248
       colored_packed_503: -8227093842960643097
       colored_packed_61: -8815280338543469256
@@ -26525,7 +26537,7 @@ TextureImporter:
       colored_packed_924: 1677683123890954039
       colored_packed_271: 2356515470099747605
       colored_packed_395: 7331702904183842124
-      colored_packed_418: 6736187171083086253
+      colored_packed_850: 7095131794607059879
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

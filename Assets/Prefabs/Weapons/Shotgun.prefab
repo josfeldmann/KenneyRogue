@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 981145327651393743}
-  m_LocalRotation: {x: 0, y: 0, z: 0.13052616, w: 0.9914449}
-  m_LocalPosition: {x: 0.409, y: 0.118, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.13052616, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8398226666676468460}
-  m_RootOrder: 1
+  m_Father: {fileID: 6140016917273425161}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 15}
 --- !u!114 &4325580884628789186
 MonoBehaviour:
@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 5338379786845868601, guid: ac5ce3fa9fd542b4ba87e71a1a0c8abb, type: 3}
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
   shootDelay: 0
 --- !u!1 &2769657250262541669
 GameObject:
@@ -71,10 +74,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2769657250262541669}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.409, y: 0.118, z: 0}
+  m_LocalPosition: {x: 0.771, y: 0.237, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1467346821279495008}
+  - {fileID: 8988175124805296231}
   m_Father: {fileID: 8398226666676468460}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -91,6 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 5338379786845868601, guid: ac5ce3fa9fd542b4ba87e71a1a0c8abb, type: 3}
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
   shootDelay: 0
 --- !u!1 &8398226666676468459
 GameObject:
@@ -124,8 +132,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6140016917273425161}
-  - {fileID: 1467346821279495008}
-  - {fileID: 8988175124805296231}
   - {fileID: 5684050222042545797}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -147,6 +153,8 @@ MonoBehaviour:
   sprite: {fileID: -5910802945449875061, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   pickupCollider: {fileID: 8398226666676468462}
   spriteRenderer: {fileID: 8398226666676468463}
+  button: {fileID: 0}
+  weaponObject: {fileID: 0}
   minShotTime: 0.25
   projectilePoints:
   - {fileID: 550473521815568797}
@@ -219,18 +227,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1875, y: 0.0625}
+  m_Offset: {x: 0.4050572, y: 0.14262569}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.125, y: 0.375}
-    oldSize: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.5, y: 0.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 0.96576977, y: 0.5778277}
   m_EdgeRadius: 0
 --- !u!1 &8531592689956244713
 GameObject:
@@ -262,7 +270,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8398226666676468460}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &4407800913222362716
 AudioSource:
@@ -384,13 +392,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8773779536699487869}
-  m_LocalRotation: {x: 0, y: 0, z: -0.13052624, w: 0.9914449}
-  m_LocalPosition: {x: 0.409, y: 0.118, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.13052624, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8398226666676468460}
-  m_RootOrder: 2
+  m_Father: {fileID: 6140016917273425161}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -15}
 --- !u!114 &8753619427919247537
 MonoBehaviour:
@@ -405,4 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 5338379786845868601, guid: ac5ce3fa9fd542b4ba87e71a1a0c8abb, type: 3}
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
   shootDelay: 0

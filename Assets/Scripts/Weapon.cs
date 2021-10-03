@@ -11,8 +11,26 @@ public class Weapon : MonoBehaviour {
     public Collider2D pickupCollider;
     public SpriteRenderer spriteRenderer;
 
+    [HideInInspector] public AbilityButton button;
+    [HideInInspector]public WeaponObject weaponObject;
+
+    public void Set(AbilityButton button, WeaponObject wObject, RoguelikePlayer player) {
+        this.button = button;
+        this.weaponObject = wObject;
+        this.player = player;
+    }
+
+
+    public virtual void SetTargetLayer(LayerMask mask) {
+
+    }
+
     private void Awake() {
-       
+        Setup();
+    }
+
+    public virtual void Setup() {
+
     }
 
     public virtual void FireDown() {
@@ -26,24 +44,4 @@ public class Weapon : MonoBehaviour {
     public virtual void FireUp() {
 
     }
-
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.layer == Layers.player) {
-            RoguelikePlayer r = collision.GetComponent<RoguelikePlayer>();
-            
-            if (r.currentNumberOfWeapons < r.numberOfWeapons) {
-                r.EquipWeapon(this);
-            } else {
-                r.HoveredWeapons.Add(this);
-            }
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision) {
-        if (collision.gameObject.layer == Layers.player) {
-            RoguelikePlayer r = collision.GetComponent<RoguelikePlayer>();
-            if (r.HoveredWeapons.Contains(this))r.HoveredWeapons.Remove(this);
-        }
-    }
-
 }

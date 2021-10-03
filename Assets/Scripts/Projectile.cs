@@ -14,11 +14,12 @@ public class Projectile : MonoBehaviour
 
 
     private void Update() {
-        transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+        ProjectileUpdate();
     }
 
-    public void Init() {
-        Destroy(gameObject, 10f);
+    public void Init(LayerMask mask) {
+        target = mask;
+        Destroy(gameObject, expireTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -29,9 +30,18 @@ public class Projectile : MonoBehaviour
            // u.rb.AddForce((collision.gameObject.transform.position - transform.position).normalized * pushForce);
             Destroy(gameObject);
         }
-        else if (collision.gameObject.layer == 0) {
-            Destroy(gameObject);
-        }
+    }
+
+    public virtual void AimProjectileAt(Vector3 vector) {
+        transform.right = (vector - transform.position);
+    }
+
+    public virtual void AimProjectileAt(Target target) {
+        AimProjectileAt(target.transform.position);
+    }
+
+    public virtual void ProjectileUpdate() {
+        transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
     }
 
 

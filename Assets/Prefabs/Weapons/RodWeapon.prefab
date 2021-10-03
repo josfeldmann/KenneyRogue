@@ -294,7 +294,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &5401071102840215004
 GameObject:
@@ -342,6 +342,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 5338379786845868601, guid: e365f92b91320d948abcc12b18a369bd, type: 3}
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
   shootDelay: 0
 --- !u!1 &6386204440287391626
 GameObject:

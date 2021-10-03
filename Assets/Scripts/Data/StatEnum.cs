@@ -1,0 +1,5 @@
+﻿public enum StatEnum {
+    MAXHP = 0, ATTACKDAMAGE = 1, ATTACKSPEED = 2, MAGICDAMAGE = 3, MOVESPEED = 4, COOLDOWN = 5
+}
+
+
