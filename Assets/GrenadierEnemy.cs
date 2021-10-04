@@ -27,7 +27,7 @@ public class GrenadierEnemy : Unit
 
     private void Update() {
         if (target == null) {
-            target = Target.playertargets[0];
+            target = Target.GetPlayer();
             return;
         }
         controller.Update();

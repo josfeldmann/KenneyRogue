@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 
 
@@ -43,5 +44,9 @@ public class Weapon : MonoBehaviour {
 
     public virtual void FireUp() {
 
+    }
+
+    public virtual string GetDescription() {
+        return "Weapon Description";
     }
 }

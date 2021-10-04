@@ -4910,7 +4910,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peasant
+      name: peasantArcher
       rect:
         serializedVersion: 2
         x: 480
@@ -9089,7 +9089,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: colored_transparent_packed_276
+      name: Crossbow
       rect:
         serializedVersion: 2
         x: 592
@@ -9110,7 +9110,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: colored_transparent_packed_277
+      name: Crossbow2
       rect:
         serializedVersion: 2
         x: 608
@@ -9131,7 +9131,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: colored_transparent_packed_278
+      name: Crossbow3
       rect:
         serializedVersion: 2
         x: 624
@@ -10097,7 +10097,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: colored_transparent_packed_324
+      name: bow1
       rect:
         serializedVersion: 2
         x: 592
@@ -10118,7 +10118,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: colored_transparent_packed_325
+      name: bow2
       rect:
         serializedVersion: 2
         x: 608
@@ -10139,7 +10139,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: colored_transparent_packed_326
+      name: Bow3
       rect:
         serializedVersion: 2
         x: 624
@@ -10160,7 +10160,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: colored_transparent_packed_327
+      name: Bow4
       rect:
         serializedVersion: 2
         x: 640
@@ -10181,7 +10181,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: colored_transparent_packed_328
+      name: Bow5
       rect:
         serializedVersion: 2
         x: 656
@@ -10202,7 +10202,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: colored_transparent_packed_329
+      name: Quiver
       rect:
         serializedVersion: 2
         x: 672
@@ -11714,7 +11714,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: colored_transparent_packed_401
+      name: Arrrow
       rect:
         serializedVersion: 2
         x: 288
@@ -25491,7 +25491,6 @@ TextureImporter:
       colored_transparent_packed_176: 8722519330997420673
       colored_transparent_packed_225: 6154351940013603817
       colored_transparent_packed_192: -3603028801699401161
-      Peasant: -341190111982731225
       colored_transparent_packed_745: 1012366800675699692
       colored_transparent_packed_403: -6779466759939726309
       colored_transparent_packed_454: -987050645026100886
@@ -25558,7 +25557,6 @@ TextureImporter:
       colored_transparent_packed_164: 6919365959319007192
       colored_transparent_packed_942: 6303153120987505384
       colored_transparent_packed_272: -4684869728355482587
-      colored_transparent_packed_401: 6904246618141141707
       colored_transparent_packed_890: 7609497560582664899
       colored_transparent_packed_67: 4144558810407681582
       colored_transparent_packed_628: -2479113208827747317
@@ -25603,7 +25601,6 @@ TextureImporter:
       colored_transparent_packed_267: -8762993801760203379
       colored_transparent_packed_125: 8937368262047775883
       colored_transparent_packed_811: -8260373685526275379
-      colored_transparent_packed_324: -2956485710125220326
       colored_transparent_packed_211: 3983439120796418446
       0: 4353663619856342975
       colored_transparent_packed_418: -905912774598856088
@@ -25622,6 +25619,7 @@ TextureImporter:
       colored_transparent_packed_498: 6923804032291440201
       colored_transparent_packed_696: 3776503677534560759
       colored_transparent_packed_155: -2133412760091618269
+      Quiver: -1366559409044114357
       colored_transparent_packed_1043: -7859051464060080533
       colored_transparent_packed_1054: 5622896664310369207
       colored_transparent_packed_3: 3807160773484928076
@@ -25713,6 +25711,7 @@ TextureImporter:
       colored_transparent_packed_879: 8028636110326240742
       colored_transparent_packed_843: 1460058348142385836
       Sword: -4567482163649168051
+      Bow4: -2810990292184674436
       colored_transparent_packed_336: -2079979318565653757
       colored_transparent_packed_847: -2595442599909634822
       colored_transparent_packed_455: -3951765596008570464
@@ -25741,7 +25740,6 @@ TextureImporter:
       colored_transparent_packed_655: -5396748771019905414
       colored_transparent_packed_101: -1202031289219992246
       colored_transparent_packed_478: 2766316429869177019
-      colored_transparent_packed_326: -5534835941141690546
       colored_transparent_packed_485: 9221569878957321197
       colored_transparent_packed_65: 593484757975044107
       colored_transparent_packed_479: -1351384381207325845
@@ -25759,6 +25757,7 @@ TextureImporter:
       colored_transparent_packed_815: 2345483516471718625
       colored_transparent_packed_921: 3598714648609201038
       colored_transparent_packed_54: -1806294424427068052
+      Arrrow: 6904246618141141707
       colored_transparent_packed_25: 8781100339413429480
       colored_transparent_packed_97: 2703109476868214566
       colored_transparent_packed_332: 5925143078075158344
@@ -25920,12 +25919,11 @@ TextureImporter:
       colored_transparent_packed_70: -4752529745651574698
       colored_transparent_packed_73: 2105536246359451209
       colored_transparent_packed_527: -7748336491800652100
-      colored_transparent_packed_276: -5327574120710591286
-      colored_transparent_packed_534: 5075043678203522664
       colored_transparent_packed_579: 6232235989069574734
+      colored_transparent_packed_534: 5075043678203522664
+      colored_transparent_packed_739: -2129679949650745008
       colored_transparent_packed_305: 3931176682442837003
       colored_transparent_packed_670: 5030110567875273771
-      colored_transparent_packed_739: -2129679949650745008
       colored_transparent_packed_841: 6364238414442608511
       colored_transparent_packed_992: -3237698941530108286
       colored_transparent_packed_374: 8847040379677344933
@@ -25942,7 +25940,6 @@ TextureImporter:
       colored_transparent_packed_578: 6311850475184557525
       colored_transparent_packed_623: -5973447379131576381
       colored_transparent_packed_744: 551402728324171003
-      colored_transparent_packed_329: -1366559409044114357
       Gobli: -5601523589100708130
       colored_transparent_packed_787: -4749078811591037723
       colored_transparent_packed_626: -5132839979952750033
@@ -25955,6 +25952,7 @@ TextureImporter:
       colored_transparent_packed_685: -9136634715481205714
       colored_transparent_packed_848: -2894236013631306162
       colored_transparent_packed_22: -2973161745704446108
+      Bow5: 4239556579006301208
       colored_transparent_packed_635: -7409057923436496586
       colored_transparent_packed_142: 3848395714267493722
       colored_transparent_packed_1002: 8960788054337827618
@@ -26030,14 +26028,13 @@ TextureImporter:
       colored_transparent_packed_593: -3963015318292413878
       colored_transparent_packed_982: 1154610049570199186
       colored_transparent_packed_200: -5581755681860434584
-      colored_transparent_packed_475: -4004252557852297842
+      colored_transparent_packed_555: 2129128031314841554
       colored_transparent_packed_1028: -2244729057278126795
       colored_transparent_packed_477: -6695420533642814885
       colored_transparent_packed_611: -6928609661634790882
       colored_transparent_packed_896: 3913598813759267036
-      colored_transparent_packed_277: 7528599948814648848
+      colored_transparent_packed_475: -4004252557852297842
       colored_transparent_packed_905: 3021796052042469140
-      colored_transparent_packed_555: 2129128031314841554
       colored_transparent_packed_384: 1194171989205175484
       colored_transparent_packed_801: -1698908136567220812
       colored_transparent_packed_988: -2533334241703725171
@@ -26045,6 +26042,7 @@ TextureImporter:
       colored_transparent_packed_100: -3950408397821896629
       colored_transparent_packed_936: -3020006453789297985
       colored_transparent_packed_913: 2553646504940597761
+      bow1: -2956485710125220326
       colored_transparent_packed_161: 296254009337487589
       colored_transparent_packed_306: -922222860815310472
       colored_transparent_packed_256: 6660202789375671929
@@ -26068,7 +26066,6 @@ TextureImporter:
       colored_transparent_packed_880: 3191952906212429927
       colored_transparent_packed_1026: -3542032938801076679
       colored_transparent_packed_878: -3708859972968621928
-      colored_transparent_packed_325: 4164584355842939140
       colored_transparent_packed_932: -4407464542236621398
       colored_transparent_packed_212: -7489933114746661393
       colored_transparent_packed_391: 8544214907418172418
@@ -26111,16 +26108,17 @@ TextureImporter:
       colored_transparent_packed_536: -4930382151707033518
       colored_transparent_packed_123: -1572526094211362911
       colored_transparent_packed_365: -7966352483322198169
-      colored_transparent_packed_439: -7559905738563943774
       colored_transparent_packed_590: 7586162469061019693
       colored_transparent_packed_649: -2325147154032771058
+      colored_transparent_packed_439: -7559905738563943774
+      peasantArcher: -341190111982731225
       colored_transparent_packed_338: -3259375620508145328
       colored_transparent_packed_948: -6536681318633846429
       colored_transparent_packed_747: 9003285266805701710
       colored_transparent_packed_435: 7263367038286760639
-      colored_transparent_packed_480: -5779498644572938869
-      colored_transparent_packed_883: 4662515025953312348
       colored_transparent_packed_494: -8374838926824160345
+      colored_transparent_packed_883: 4662515025953312348
+      colored_transparent_packed_480: -5779498644572938869
       colored_transparent_packed_808: -4641445252850518210
       colored_transparent_packed_288: 2528148077868765496
       colored_transparent_packed_920: 1064726879086336765
@@ -26138,10 +26136,9 @@ TextureImporter:
       colored_transparent_packed_930: 4495058173067571424
       5: -2386630608618451675
       colored_transparent_packed_60: -6153522699836744385
-      colored_transparent_packed_328: 4239556579006301208
+      colored_transparent_packed_793: 2187584346547305106
       colored_transparent_packed_462: -7784668389529574454
       colored_transparent_packed_205: -8619357135535472856
-      colored_transparent_packed_793: 2187584346547305106
       colored_transparent_packed_196: -4084924919258358318
       colored_transparent_packed_812: -4844526777901714200
       colored_transparent_packed_1034: 8589729377551955591
@@ -26162,12 +26159,11 @@ TextureImporter:
       colored_transparent_packed_463: 4903443257983052015
       colored_transparent_packed_789: 1064466284916179271
       colored_transparent_packed_869: -4475369037635209476
-      colored_transparent_packed_278: 1540720963889068762
       colored_transparent_packed_822: 2700436685655292357
+      colored_transparent_packed_832: -864887056645156055
       colored_transparent_packed_160: 5546897668765825972
       colored_transparent_packed_684: 3692048143888885172
       colored_transparent_packed_729: -3669221315751912074
-      colored_transparent_packed_832: -864887056645156055
       colored_transparent_packed_408: -5104157816438428397
       colored_transparent_packed_114: 9142494562876348564
       colored_transparent_packed_295: 884143812339876872
@@ -26255,6 +26251,7 @@ TextureImporter:
       colored_transparent_packed_346: 6244554320015899491
       colored_transparent_packed_16: 1223561466090120451
       colored_transparent_packed_898: -441508200074047192
+      Crossbow: -5327574120710591286
       colored_transparent_packed_188: -7626343907350459844
       colored_transparent_packed_839: 8089455934176080088
       colored_transparent_packed_697: -1220482628266995495
@@ -26275,7 +26272,6 @@ TextureImporter:
       colored_transparent_packed_308: 961623500846540279
       colored_transparent_packed_516: -542836528211498736
       colored_transparent_packed_625: -3190959903962462875
-      colored_transparent_packed_327: -2810990292184674436
       colored_transparent_packed_509: -1310563153070530063
       colored_transparent_packed_627: -3229787527053404441
       colored_transparent_packed_837: -2305519505444458273
@@ -26390,6 +26386,7 @@ TextureImporter:
       colored_transparent_packed_466: 2650692756745476494
       colored_transparent_packed_652: 789639651499698051
       colored_transparent_packed_660: 1041470369204269426
+      Crossbow2: 7528599948814648848
       colored_transparent_packed_861: -3483235219095648975
       colored_transparent_packed_26: 8866965522397569799
       colored_transparent_packed_233: -8545942702635835483
@@ -26485,6 +26482,7 @@ TextureImporter:
       colored_transparent_packed_341: 5907311362080879472
       colored_transparent_packed_219: 6402449206770560477
       colored_transparent_packed_132: 1204451778576593989
+      Bow3: -5534835941141690546
       colored_transparent_packed_784: -8871108618184283170
       colored_transparent_packed_738: -7558896272152018382
       colored_transparent_packed_765: 682368130306173673
@@ -26492,6 +26490,7 @@ TextureImporter:
       colored_transparent_packed_1009: 7255818381222042757
       colored_transparent_packed_665: 5561344284550438857
       colored_transparent_packed_1016: 7953125301832258146
+      Crossbow3: 1540720963889068762
       colored_transparent_packed_888: 1190751402109577108
       colored_transparent_packed_388: 429674409381902447
       colored_transparent_packed_257: -8135518217832610887
@@ -26503,9 +26502,10 @@ TextureImporter:
       colored_transparent_packed_1: -2362392033055028080
       colored_transparent_packed_607: -3235037260113114750
       7: 281191939382643500
+      bow2: 4164584355842939140
       colored_transparent_packed_1020: -308843103206876140
-      colored_transparent_packed_152: -8282077321704206118
       colored_transparent_packed_393: 7958001287967514764
+      colored_transparent_packed_152: -8282077321704206118
       colored_transparent_packed_14: 2641857779292683264
       colored_transparent_packed_369: 4109514674942076826
       colored_transparent_packed_632: -284827564913555116

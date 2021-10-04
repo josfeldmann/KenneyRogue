@@ -24,11 +24,15 @@ public class ShootProjectileWeapon : Weapon
         ShootLogic();
     }
 
-    
+    public override string GetDescription() {
+        return "Projectile Weapon";
+    }
+
+
 
     public void ShootLogic() {
         if (Time.time > time) {
-            Vector3 vec = player.cam.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 vec = player.GetMousePosition();
             foreach (ProjectilePoint p in projectilePoints) {
                 p.Fire(vec);
             }

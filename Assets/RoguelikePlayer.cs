@@ -10,7 +10,7 @@ public class StatUnit : Unit {
     [HideInInspector] public StatWrapper currentStats = new StatWrapper();
     public StatWrapper baseStats = new StatWrapper();
     public StatWrapper bonusStats = new StatWrapper();
-
+    public VoidDelegate onChangeStats;
 
     public virtual void CalculateStats() {
         currentStats = baseStats + bonusStats;
@@ -21,13 +21,14 @@ public class StatUnit : Unit {
         currentStats.attackSpeed += currentStats.agility;
         currentStats.moveSpeed += currentStats.agility;
         currentStats.attackDamage += (currentStats.agility + currentStats.strength) / 4;
+        if (onChangeStats != null) onChangeStats.Invoke();
     }
 }
 
 public class RoguelikePlayer : StatUnit {
 
 
-
+    public bool inCustomMovement = false;
     public RaceObject raceObject;
     [Header("Weapon")]
     public Transform buttonGroupingObject;
@@ -36,6 +37,7 @@ public class RoguelikePlayer : StatUnit {
     public AbilityButton weaponButton;
     public Weapon weapon;
     
+    
     [Header("Abilities")]
     public List<AbilityObject> abilityObjects = new List<AbilityObject>();
     public AbilityButton abilityButtonprefab;
@@ -43,7 +45,10 @@ public class RoguelikePlayer : StatUnit {
     public List<Ability> abilities;
 
     [Header("Items")]
+    public Transform itemTransform;
+    public ItemIcon itemIconPrefab;
     public List<ItemObject> items = new List<ItemObject>();
+    public List<ItemIcon> itemIcons;
 
     [Header("CharacterController")]
     public StateMachine<RoguelikePlayer> statemachine;
@@ -51,8 +56,9 @@ public class RoguelikePlayer : StatUnit {
     public SpriteRenderer sRenderer;
     public InputManager manager;
     public Transform rightHand;
-
+    public Collider2D bodyColiider;
     public LayerMask enemyTargettingLayer;
+    public LayerMask impassableLayers;
 
     internal void SetPlayerNextScene(string toGoTo) {
 
@@ -83,6 +89,13 @@ public class RoguelikePlayer : StatUnit {
 
     
     public float walkSpeed = 5f;
+
+    internal Vector3 GetMousePosition() {
+        Vector3 vec = cam.ScreenToWorldPoint(Input.mousePosition);
+        vec.z = 0;
+        return vec;
+    }
+
     public Transform abilitySlotTransform;
     public Transitioner transitioner;
     public HealthManager healthManager;
@@ -104,6 +117,7 @@ public class RoguelikePlayer : StatUnit {
         setup = true;
         SetWeapon(weaponObject);
         SetAbilities();
+        SetItems();
 
     }
 
@@ -138,18 +152,32 @@ public class RoguelikePlayer : StatUnit {
 
         foreach (AbilityObject a in abilityObjects) {
             Ability ab = Instantiate(a.abilityPrefab, abilityGroupingingobject);
+            AbilityButton button = Instantiate(abilityButtonprefab, buttonGroupingObject);
+            ab.Set(button, a, enemyTargettingLayer);
+            ab.Setup();
             abilities.Add(ab);
+            ab.player = this;
             ab.transform.localPosition = Vector3.zero;
             ab.transform.localEulerAngles = Vector3.zero;
             ab.CalculateCooldown();
-            AbilityButton button = Instantiate(abilityButtonprefab, buttonGroupingObject);
-            ab.Set(button, a, enemyTargettingLayer);
             button.SetAbility(ab);
             
         }
     }
 
-
+    public void SetItems() {
+        foreach (ItemIcon itemIcon in itemIcons) {
+            itemIcon.gameObject.SetActive(false);
+        }
+        for (int i = itemIcons.Count; i < items.Count; i++) {
+            ItemIcon iIcon = Instantiate(itemIconPrefab, itemTransform);
+            itemIcons.Add(iIcon);
+        }
+        for (int i = 0; i < items.Count; i++) {
+            itemIcons[i].gameObject.SetActive(true);
+            itemIcons[i].Set(items[i]);
+        }
+    }
 
 
     public void ResetLevel() {
@@ -200,14 +228,14 @@ public class RoguelikePlayer : StatUnit {
    
 
     public void FlashForDamage() {
-        canBeHurt = false;
+        canTakeDamage = false;
         StartCoroutine(DamageFlash());
     }
 
 
     private IEnumerator DamageFlash() {
 
-        canBeHurt = false;
+        canTakeDamage = false;
 
         for (int i = 0; i < 3; i++) {
             yield return new WaitForSeconds(0.15f);
@@ -215,7 +243,7 @@ public class RoguelikePlayer : StatUnit {
             yield return new WaitForSeconds(0.1f);
             sRenderer.enabled = true;
         }
-        canBeHurt = true;
+        canTakeDamage = true;
 
     }
 
@@ -225,7 +253,7 @@ public class RoguelikePlayer : StatUnit {
         deathPrompt.SetActive(true);
         pausedPrompt.SetActive(false);
         GameManager.UnPause();
-        canBeHurt = false;
+        canTakeDamage = false;
         statemachine.ChangeState(new RoguelikePlayerDoNothingState());
       
         StartCoroutine(Dienumerator());
@@ -244,8 +272,8 @@ public class RoguelikePlayer : StatUnit {
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.layer == Layers.hurtPlayer) {
-            if (canBeHurt) {
-                pushBack = -(other.contacts[0].point - new Vector2(transform.position.x, transform.position.y)).normalized * lavaPushBack;
+            if (canTakeDamage) {
+               // pushBack = -(other.contacts[0].point - new Vector2(transform.position.x, transform.position.y)).normalized * lavaPushBack;
                 TakeDamage(1);
                 print("takeDamage");
             }
@@ -254,10 +282,6 @@ public class RoguelikePlayer : StatUnit {
 
 
     public void AimRightHand() {
-
-
-
-
         Vector3 mousePoint = cam.ScreenToWorldPoint(Input.mousePosition);
         mousePoint.z = 0;
 
@@ -273,9 +297,67 @@ public class RoguelikePlayer : StatUnit {
         }
         rightHand.right = -dir;
         abilityGroupingingobject.right = -(abilityGroupingingobject.position - mousePoint).normalized;
-
-
     }
+
+    public void AbilityWeaponFireCheck() {
+        if (weapon != null) {
+            if (manager.firePressed) {
+                weapon.FireDown();
+            } else if (manager.fireheld) {
+                weapon.FireHeld();
+            } else if (manager.fireReleased) {
+                weapon.FireUp();
+            }
+        }
+
+        if (abilities.Count >= 1) {
+            if (manager.skill1Down) {
+                abilities[0].SkillDown();
+            } else if (manager.skill1Held) {
+                abilities[0].SkillHeld();
+            } else if (manager.skill1Up) {
+                abilities[0].SkillUp();
+            }
+        }
+
+        if (abilities.Count >= 2) {
+            if (manager.skill2Down) {
+                abilities[1].SkillDown();
+            } else if (manager.skill2Held) {
+                abilities[1].SkillHeld();
+            } else if (manager.skill2Up) {
+                abilities[1].SkillUp();
+            }
+        }
+
+        if (abilities.Count >= 3) {
+            if (manager.skill3Down) {
+                abilities[2].SkillDown();
+            } else if (manager.skill3Held) {
+                abilities[2].SkillHeld();
+            } else if (manager.skill3Up) {
+                abilities[2].SkillUp();
+            }
+        }
+    }
+
+
+
+    public void MakeInvincibleAndImpassable() {
+        bodyColiider.enabled = false;
+        rb.isKinematic = true;
+        rb.velocity = Vector3.zero;
+        canTakeDamage = false;
+    }
+
+    public void MakeNotInvicible() {
+        bodyColiider.enabled = true;
+        rb.isKinematic = false;
+        rb.velocity = Vector3.zero;
+        canTakeDamage = true;
+    }
+
+
 
 }
 
@@ -293,52 +375,12 @@ public class RoguelikePlayerMoveState : State<RoguelikePlayer> {
         obj.target.DecreasePushBack();
 
         obj.target.AimRightHand();
-
-        if (obj.target.weapon != null) {
-            if (obj.target.manager.firePressed) {
-                obj.target.weapon.FireDown();
-            } else if (obj.target.manager.fireheld) {
-                obj.target.weapon.FireHeld();
-            } else if (obj.target.manager.fireReleased) {
-                obj.target.weapon.FireUp();
-            }
-        }
-
-        if (obj.target.abilities.Count >= 1) {
-            if (obj.target.manager.skill1Down) {
-                obj.target.abilities[0].SkillDown();
-            } else if (obj.target.manager.skill1Held) {
-                obj.target.abilities[0].SkillHeld();
-            } else if (obj.target.manager.skill1Up) {
-                obj.target.abilities[0].SkillUp();
-            }
-        }
-
-        if (obj.target.abilities.Count >= 2) {
-            if (obj.target.manager.skill2Down) {
-                obj.target.abilities[1].SkillDown();
-            } else if (obj.target.manager.skill2Held) {
-                obj.target.abilities[1].SkillHeld();
-            } else if (obj.target.manager.skill2Up) {
-                obj.target.abilities[1].SkillUp();
-            }
-        }
-
-        if (obj.target.abilities.Count >= 3) {
-            if (obj.target.manager.skill3Down) {
-                obj.target.abilities[2].SkillDown();
-            } else if (obj.target.manager.skill3Held) {
-                obj.target.abilities[2].SkillHeld();
-            } else if (obj.target.manager.skill3Up) {
-                obj.target.abilities[2].SkillUp();
-            }
-        }
-
-
-
-
-
+        obj.target.AbilityWeaponFireCheck();
+        
     }
+
+
+   
 
 }
 

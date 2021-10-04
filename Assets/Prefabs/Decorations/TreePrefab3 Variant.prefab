@@ -55,9 +55,13 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -939382777844164043, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
+    - target: {fileID: 5298384804014890690, guid: 3a82f34bf3b733a43ab5201de9cacf15, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5298384804014890700, guid: 3a82f34bf3b733a43ab5201de9cacf15, type: 3}
       propertyPath: m_Name
-      value: TreePrefab3
+      value: TreePrefab3 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a82f34bf3b733a43ab5201de9cacf15, type: 3}

@@ -6,7 +6,8 @@ public class ItemObject : TrackedObject {
     public string itemKey = "";
     public string itemName;
     public Sprite itemSprite;
-    List<StatPair> itemStats = new List<StatPair>();
+    public List<StatPair> itemStats = new List<StatPair>();
+    public string itemDescription;
 
     public override string GetKey() {
         return itemKey;
@@ -14,6 +15,10 @@ public class ItemObject : TrackedObject {
 
     public override string GetName() {
         return itemName;
+    }
+
+    public string GetDescription() {
+        return itemDescription;
     }
 }
 

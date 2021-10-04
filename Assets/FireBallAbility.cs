@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class FireBallAbility : Ability
 {
@@ -14,10 +13,9 @@ public class FireBallAbility : Ability
             p.Init(enemyLayerMask);
             SetOnCooldown();
         }
-        
-
     }
 
-
-    
+    public override string GetDescription() {
+        return "Shoots a Fireball for [50/100/150] damage";
+    }
 }

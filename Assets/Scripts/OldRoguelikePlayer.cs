@@ -151,14 +151,14 @@ public class OldRoguelikePlayer : Unit
     }
 
     public void FlashForDamage() {
-        canBeHurt = false;
+        canTakeDamage = false;
         StartCoroutine(DamageFlash());
     }
 
 
     private IEnumerator DamageFlash() {
 
-        canBeHurt = false;
+        canTakeDamage = false;
 
         for (int i = 0; i < 3; i++) {
             yield return new WaitForSeconds(0.15f);
@@ -166,7 +166,7 @@ public class OldRoguelikePlayer : Unit
             yield return new WaitForSeconds(0.1f);
             sRenderer.enabled = true;
         }
-        canBeHurt = true;
+        canTakeDamage = true;
 
     }
 
@@ -176,7 +176,7 @@ public class OldRoguelikePlayer : Unit
         deathPrompt.SetActive(true);
         pausedPrompt.SetActive(false);
         GameManager.UnPause();
-        canBeHurt = false;
+        canTakeDamage = false;
         statemachine.ChangeState(new DoNothingState());
         if (currentWeapon != null) {
             currentWeapon.transform.SetParent(transform.parent);
@@ -257,7 +257,7 @@ public class OldRoguelikePlayer : Unit
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.layer == Layers.hurtPlayer) {
-            if (canBeHurt) {
+            if (canTakeDamage) {
                 pushBack = -(other.contacts[0].point - new Vector2(transform.position.x, transform.position.y)).normalized * lavaPushBack;
                 TakeDamage(1);
                 lavaHitSound.Play();

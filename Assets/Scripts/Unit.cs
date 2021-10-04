@@ -4,17 +4,19 @@ public delegate void VoidDelegate();
 
 public class Unit : MonoBehaviour {
 
+    [HideInInspector]public bool isDead = false;
     public VoidDelegate onTakeDamage;
     public VoidDelegate onDeath;
     public Rigidbody2D rb;
     public float maxHp = 5, currentHP = 5;
-    public bool canBeHurt = true;
+    public bool canTakeDamage = true;
     public void TakeDamage(float amt) {
 
-        if (canBeHurt) {
+        if (canTakeDamage && !isDead) {
             currentHP -= amt;
             if (currentHP <= 0) {
                 currentHP = 0;
+                isDead = true;
                 if (onDeath != null) onDeath.Invoke();
             }
             if (onTakeDamage != null) onTakeDamage.Invoke();
