@@ -14,6 +14,7 @@ public class Unit : MonoBehaviour {
 
         if (canTakeDamage && !isDead) {
             currentHP -= amt;
+            
             if (currentHP <= 0) {
                 currentHP = 0;
                 isDead = true;

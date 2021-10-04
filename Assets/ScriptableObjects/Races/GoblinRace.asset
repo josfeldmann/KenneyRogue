@@ -16,17 +16,16 @@ MonoBehaviour:
   raceName: Goblin
   raceSprite: {fileID: -5601523589100708130, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   racialStats:
-    maxHP: 100
-    maxMana: 0
-    agility: 0
-    intelligence: 0
-    strength: 0
-    manaRegen: 0
-    armor: 0
-    attackDamage: 10
-    spellAmp: 0
-    attackSpeed: 10
-    magicAmp: 0
+    maxHP: 400
+    maxMana: 10
+    agility: 20
+    intelligence: 10
+    strength: 10
+    manaRegen: 1
+    armor: 5
+    attackDamage: 100
+    spellAmp: 100
+    attackSpeed: 100
     moveSpeed: 100
     coolDownReduction: 0
   racialAbility: {fileID: 11400000, guid: 0337c925c5705b440b4fbdb88019e42f, type: 2}

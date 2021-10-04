@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShootProjectileWeapon : Weapon
 {
 
-    public float minShotTime =  0.25f;
+    public float regularTimeBetweenAttacks = 1;
     public List<ProjectilePoint> projectilePoints;
     public float time = 0;
     public AudioSource shootSFX;
@@ -30,15 +30,19 @@ public class ShootProjectileWeapon : Weapon
 
 
 
-    public void ShootLogic() {
+    public virtual void ShootLogic() {
         if (Time.time > time) {
             Vector3 vec = player.GetMousePosition();
             foreach (ProjectilePoint p in projectilePoints) {
+                p.SetDamage(player.currentStats.attackDamage);
                 p.Fire(vec);
             }
-            time = Time.time + minShotTime;
+            time = Time.time + regularTimeBetweenAttacks/ (player.currentStats.attackSpeed/100);
             shootSFX.Play();
         }
     }
 
+    
+
 }
+

@@ -11,17 +11,22 @@ public class StatUnit : Unit {
     public StatWrapper baseStats = new StatWrapper();
     public StatWrapper bonusStats = new StatWrapper();
     public VoidDelegate onChangeStats;
-
+    public List<ItemObject> items = new List<ItemObject>();
     public virtual void CalculateStats() {
         currentStats = baseStats + bonusStats;
+        foreach (ItemObject item in items) {
+            currentStats.AddItemStats(item);
+        }
         currentStats.maxHP += currentStats.strength * 10;
         currentStats.maxMana += currentStats.intelligence * 10;
-        currentStats.magicAmp += currentStats.intelligence;
         currentStats.manaRegen += currentStats.intelligence;
         currentStats.attackSpeed += currentStats.agility;
         currentStats.moveSpeed += currentStats.agility;
         currentStats.attackDamage += (currentStats.agility + currentStats.strength) / 4;
+        currentStats.spellAmp += currentStats.intelligence;
+        maxHp = currentStats.maxHP;
         if (onChangeStats != null) onChangeStats.Invoke();
+        
     }
 }
 
@@ -47,7 +52,6 @@ public class RoguelikePlayer : StatUnit {
     [Header("Items")]
     public Transform itemTransform;
     public ItemIcon itemIconPrefab;
-    public List<ItemObject> items = new List<ItemObject>();
     public List<ItemIcon> itemIcons;
 
     [Header("CharacterController")]
@@ -118,6 +122,10 @@ public class RoguelikePlayer : StatUnit {
         SetWeapon(weaponObject);
         SetAbilities();
         SetItems();
+        SetRace(raceObject);
+        CalculateStats();
+        currentHP = currentStats.maxHP;
+        CalculateStats();
 
     }
 

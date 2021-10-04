@@ -11,10 +11,17 @@ public class CrossbowEnemy : StatUnit
     public Target target;
     public Vector2 idleWaitTime = new Vector2(1, 4);
     public float attackWaitTime = 1f;
+    public float shrinkTime = 0.25f;
+    public float shotSpeed = 10f;
 
     private void Awake() {
+        CalculateStats();
+        currentHP = currentStats.maxHP;
+        CalculateStats();
         shootPoint.SetMask(targettingLayer);
         stateMachine = new StateMachine<CrossbowEnemy>(new CrossBowEnemyIdle(), this);
+        onDeath += ArcherDie;
+        shootPoint.SetDamage(currentStats.attackDamage);
     }
 
     public void AimAtTarget() {
@@ -28,6 +35,10 @@ public class CrossbowEnemy : StatUnit
             return;
         }
         stateMachine.Update();
+    }
+
+    public void ArcherDie() {
+        stateMachine.ChangeState(new CrossBowEnemyDie());
     }
 }
 
@@ -57,9 +68,35 @@ public class CrossbowEnemyAttack : State<CrossbowEnemy> {
     }
 
     public override void Update(StateMachine<CrossbowEnemy> obj) {
+        obj.target.AimAtTarget();
         if (Time.time > attackTime) {
             obj.target.shootPoint.Fire(obj.target.target.transform.position);
             obj.ChangeState(new CrossBowEnemyIdle());
         }
+    }
+}
+
+
+
+public class CrossBowEnemyDie : State<CrossbowEnemy> {
+
+    public float timer = 0;
+
+    public override void Enter(StateMachine<CrossbowEnemy> obj) {
+        
+    }
+
+    public override void Update(StateMachine<CrossbowEnemy> obj) {
+
+        if (timer > obj.target.shrinkTime) {
+            GameObject.Destroy(obj.target.gameObject);
+            return;
+        }
+
+        obj.target.transform.localScale = new Vector3(obj.target.shrinkTime - timer, obj.target.shrinkTime - timer, 1);
+
+
+        timer += Time.deltaTime;
+
     }
 }

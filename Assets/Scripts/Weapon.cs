@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour {
     public Sprite sprite;
     public Collider2D pickupCollider;
     public SpriteRenderer spriteRenderer;
+    public int level = 1;
 
     [HideInInspector] public AbilityButton button;
     [HideInInspector]public WeaponObject weaponObject;

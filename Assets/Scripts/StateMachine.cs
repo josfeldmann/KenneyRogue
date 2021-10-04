@@ -1,4 +1,6 @@
-﻿public class StateMachine<T> {
+﻿
+
+public class StateMachine<T>  {
     public State<T> currentState;
     public T target;
     public StateMachine(State<T> startState, T obj) {
