@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 
 public delegate void VoidDelegate();
+public delegate void DamageDelegate(float amt);
 
 public class Unit : MonoBehaviour {
 
     [HideInInspector]public bool isDead = false;
-    public VoidDelegate onTakeDamage;
+    public DamageDelegate onTakeDamage;
     public VoidDelegate onDeath;
     public Rigidbody2D rb;
     public float maxHp = 5, currentHP = 5;
@@ -20,7 +21,7 @@ public class Unit : MonoBehaviour {
                 isDead = true;
                 if (onDeath != null) onDeath.Invoke();
             }
-            if (onTakeDamage != null) onTakeDamage.Invoke();
+            if (onTakeDamage != null) onTakeDamage.Invoke(amt);
         }
 
 

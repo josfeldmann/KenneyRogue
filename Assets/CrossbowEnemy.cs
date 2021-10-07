@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CrossbowEnemy : StatUnit
 {
+    public float baseMoveSpeed = 5;
     public LayerMask targettingLayer;
     public GameObject crossBowAimer;
     public ProjectilePoint shootPoint;
@@ -14,10 +15,12 @@ public class CrossbowEnemy : StatUnit
     public float shrinkTime = 0.25f;
     public float shotSpeed = 10f;
 
+    public float minTargetDistance = 5;
+    public float maxTargetDistance = 15;
+
+
     private void Awake() {
-        CalculateStats();
-        currentHP = currentStats.maxHP;
-        CalculateStats();
+        CalculateWithHP();
         shootPoint.SetMask(targettingLayer);
         stateMachine = new StateMachine<CrossbowEnemy>(new CrossBowEnemyIdle(), this);
         onDeath += ArcherDie;
@@ -31,7 +34,7 @@ public class CrossbowEnemy : StatUnit
     private void Update() {
 
         if (target == null) {
-            target = Target.GetPlayer();
+            GetTarget();
             return;
         }
         stateMachine.Update();
@@ -40,6 +43,36 @@ public class CrossbowEnemy : StatUnit
     public void ArcherDie() {
         stateMachine.ChangeState(new CrossBowEnemyDie());
     }
+
+    public void GetTarget() {
+        target = Target.GetClosestPlayer(transform);
+    }
+
+    public Vector3 GetDirection() {
+        // float roll = Random.Range(0f, 1f);
+        if (target == null) return new Vector3();
+
+
+        float dis = Vector3.Distance(target.transform.position, transform.position);
+
+        if (dis < minTargetDistance) {
+            return (transform.position - target.transform.position).normalized;
+        } else if (dis > maxTargetDistance) {
+            return (target.transform.position - transform.position).normalized;
+        } else {
+            return Vector3.zero;
+        }
+
+        /* if (roll < 0.33f) {
+             return (transform.position - target.transform.position).normalized;
+         } else if (roll < 0.66f) {
+             return (target.transform.position - transform.position).normalized;
+         } else {
+             return new Vector3(Random.Range(-1, 1), Random.Range(-1, 1)).normalized;
+         } */
+
+    }
+
 }
 
 
@@ -47,13 +80,22 @@ public class CrossBowEnemyIdle : State<CrossbowEnemy> {
 
     public float AttackTime;
 
+    Vector3 walkDirection;
+    float moveSpeed;
+
     public override void Enter(StateMachine<CrossbowEnemy> obj) {
+        obj.target.GetTarget();
         AttackTime = Time.time + Random.Range(obj.target.idleWaitTime.x, obj.target.idleWaitTime.y);
+        moveSpeed = obj.target.baseMoveSpeed * (obj.target.currentStats.moveSpeed / 100f);
+        walkDirection = obj.target.GetDirection();
+
     }
 
     public override void Update(StateMachine<CrossbowEnemy> obj) {
         obj.target.AimAtTarget();
+        obj.target.rb.velocity = walkDirection * moveSpeed;
         if (AttackTime < Time.time) {
+            obj.target.rb.velocity = Vector2.zero;
             obj.ChangeState(new CrossbowEnemyAttack());
         }
     }
@@ -79,24 +121,14 @@ public class CrossbowEnemyAttack : State<CrossbowEnemy> {
 
 
 public class CrossBowEnemyDie : State<CrossbowEnemy> {
-
     public float timer = 0;
-
-    public override void Enter(StateMachine<CrossbowEnemy> obj) {
-        
-    }
-
+    public override void Enter(StateMachine<CrossbowEnemy> obj) { }
     public override void Update(StateMachine<CrossbowEnemy> obj) {
-
         if (timer > obj.target.shrinkTime) {
             GameObject.Destroy(obj.target.gameObject);
             return;
         }
-
-        obj.target.transform.localScale = new Vector3(obj.target.shrinkTime - timer, obj.target.shrinkTime - timer, 1);
-
-
+        obj.target.transform.localScale = new Vector3((obj.target.shrinkTime - timer) / obj.target.shrinkTime, (obj.target.shrinkTime - timer) / obj.target.shrinkTime, 1);
         timer += Time.deltaTime;
-
     }
 }

@@ -8,6 +8,7 @@ public class ItemObject : TrackedObject {
     public Sprite itemSprite;
     public List<StatPair> itemStats = new List<StatPair>();
     public string itemDescription;
+    public int goldPrice = 100;
 
     public override string GetKey() {
         return itemKey;

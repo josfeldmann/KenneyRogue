@@ -28,7 +28,7 @@ public class Projectile : MonoBehaviour
             Unit u = collision.gameObject.GetComponent<Unit>();
             u.TakeDamage(damage);
             // u.rb.AddForce((collision.gameObject.transform.position - transform.position).normalized * pushForce);
-            TextSpawner.SpawnTextAt(transform.position, damage.ToString(), 1);
+           // TextSpawner.SpawnTextAt(u.transform.position + new Vector3(0,1,0), damage.ToString(), 1);
             Destroy(gameObject);
         }
     }

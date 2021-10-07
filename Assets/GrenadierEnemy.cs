@@ -14,7 +14,7 @@ public class GrenadierEnemy : Unit
     public Vector2 ExplosionPlacementVariation = new Vector2(0.25f, 1f);
     public float aimTime = 2f;
     public float deathScaleSpeed = 1f;
-
+    public float shrinkTime = 0.25f;
     private void Awake() {
         onDeath += GrenadierDeath;
         controller = new StateMachine<GrenadierEnemy>(new GrenadierIdleState(), this);
@@ -96,13 +96,11 @@ public class GrenadierDeath : State<GrenadierEnemy> {
 
     public override void Update(StateMachine<GrenadierEnemy> obj) {
 
-        if (timer > 1) {
+        if (timer > obj.target.shrinkTime) {
             GameObject.Destroy(obj.target.gameObject);
             return;
         }
-
-        obj.target.transform.localScale = new Vector3(1 - timer, 1 - timer, 1);
-
+        obj.target.transform.localScale = new Vector3((obj.target.shrinkTime - timer)/obj.target.shrinkTime, (obj.target.shrinkTime - timer) / obj.target.shrinkTime, 1);
         timer += Time.deltaTime;
 
     }

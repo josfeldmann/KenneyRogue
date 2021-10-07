@@ -10,7 +10,7 @@ public class ItemIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public ItemObject itemObject;
 
     public void OnPointerEnter(PointerEventData eventData) {
-        TooltipMaster.current.SetItem(itemObject, this);
+        TooltipMaster.current.SetItemIconUI(itemObject, this);
     }
 
     public void OnPointerExit(PointerEventData eventData) {

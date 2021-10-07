@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eba36da6cf8f9fa43b4bda9920564566, type: 3}
+  m_Name: StatDatabase
+  m_EditorClassIdentifier: 
+  statgroups:
+  - statEnum: 1
+    statName:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 182060826624
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    description:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 1132360089600
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    sprite: {fileID: 618205837, guid: 24a1a60a4adf6f24bb995b6fe19cdbb6, type: 3}
+  - statEnum: 2
+    statName:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 214172418048
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    description:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 1221006704640
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    sprite: {fileID: 1259338740, guid: 24a1a60a4adf6f24bb995b6fe19cdbb6, type: 3}
+  - statEnum: 3
+    statName:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 311442522112
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    description:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 1438070325248
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    sprite: {fileID: 324091487, guid: 24a1a60a4adf6f24bb995b6fe19cdbb6, type: 3}
+  - statEnum: 5
+    statName:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 238398717952
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    description:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 1370726580224
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    sprite: {fileID: 69992141, guid: 24a1a60a4adf6f24bb995b6fe19cdbb6, type: 3}
+  - statEnum: 7
+    statName:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 78411186176
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    description:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 840600109056
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    sprite: {fileID: -1281170263, guid: 24a1a60a4adf6f24bb995b6fe19cdbb6, type: 3}
+  - statEnum: 8
+    statName:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 133104910336
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    description:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 938147037184
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    sprite: {fileID: 1287502298, guid: 24a1a60a4adf6f24bb995b6fe19cdbb6, type: 3}
+  - statEnum: 6
+    statName:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 166692896768
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    description:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 622995423232
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    sprite: {fileID: -956279458, guid: 24a1a60a4adf6f24bb995b6fe19cdbb6, type: 3}
+  - statEnum: 4
+    statName:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 578573549568
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    description:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 1019713667072
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    sprite: {fileID: 1834597213, guid: 24a1a60a4adf6f24bb995b6fe19cdbb6, type: 3}
+  keysToSprites: []

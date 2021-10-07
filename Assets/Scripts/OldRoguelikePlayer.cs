@@ -52,7 +52,7 @@ public class OldRoguelikePlayer : Unit
         deathPrompt.gameObject.SetActive(false);
         pausedPrompt.gameObject.SetActive(false);
         transitioner.IntroTransition();
-        healthManager.UpdateHP();
+        healthManager.UpdateHP(0);
         statemachine = new StateMachine<OldRoguelikePlayer>(new PlayerMoveState(), this);
         weapons = new Weapon[numberOfWeapons];
         buttons = new List<WeaponSlotButton>();
@@ -63,7 +63,7 @@ public class OldRoguelikePlayer : Unit
         }
         UpdateWeaponSlotButtons();
         onTakeDamage += healthManager.UpdateHP;
-        onTakeDamage += FlashForDamage;
+        //onTakeDamage += FlashForDamage;
         onDeath += Die;
     }
 
@@ -216,7 +216,6 @@ public class OldRoguelikePlayer : Unit
             toEquip.transform.localRotation = Quaternion.identity;
             
             currentWeapon = toEquip;
-            currentWeapon.pickupCollider.enabled = false;
             if (HoveredWeapons.Contains(toEquip)) {
                 HoveredWeapons.Remove(toEquip);
             }
@@ -224,7 +223,6 @@ public class OldRoguelikePlayer : Unit
 
             Weapon toDetach = weapons[currrentWeaponIndex];
             toDetach.transform.SetParent(transform.parent);
-            toDetach.pickupCollider.enabled = true;
             toDetach.gameObject.SetActive(true);
             
             if (HoveredWeapons.Contains(toDetach)) {
@@ -237,7 +235,6 @@ public class OldRoguelikePlayer : Unit
             toEquip.transform.localRotation = Quaternion.identity;
             
             currentWeapon = toEquip;
-            currentWeapon.pickupCollider.enabled = false;
             if (HoveredWeapons.Contains(toEquip)) {
                 HoveredWeapons.Remove(toEquip);
             }

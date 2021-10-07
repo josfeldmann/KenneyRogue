@@ -12,7 +12,13 @@ public class StatUnit : Unit {
     public StatWrapper bonusStats = new StatWrapper();
     public VoidDelegate onChangeStats;
     public List<ItemObject> items = new List<ItemObject>();
+    public int gold = 0, xp = 0;
+    public VoidDelegate goldXPChanged;
     public virtual void CalculateStats() {
+        CalculateStats(false);
+    }
+
+    private void CalculateStats(bool hp) {
         currentStats = baseStats + bonusStats;
         foreach (ItemObject item in items) {
             currentStats.AddItemStats(item);
@@ -25,15 +31,38 @@ public class StatUnit : Unit {
         currentStats.attackDamage += (currentStats.agility + currentStats.strength) / 4;
         currentStats.spellAmp += currentStats.intelligence;
         maxHp = currentStats.maxHP;
+        if (hp) currentHP = maxHp;
         if (onChangeStats != null) onChangeStats.Invoke();
         
     }
+
+    public void CalculateWithHP() {
+        CalculateStats(true);
+    }
+
+    public bool CanSpendGold(int goldAmount) {
+        if (gold >= goldAmount) {
+            return true;
+        }
+        return false;
+    }
+
+    public bool SpendGold(int goldAmount) {
+        if (gold >= goldAmount) {
+            gold -= goldAmount;
+            goldXPChanged.Invoke();
+            return true;
+        }
+        return false;
+    }
+
 }
 
 public class RoguelikePlayer : StatUnit {
 
 
     public bool inCustomMovement = false;
+    
     public RaceObject raceObject;
     [Header("Weapon")]
     public Transform buttonGroupingObject;
@@ -57,12 +86,15 @@ public class RoguelikePlayer : StatUnit {
     [Header("CharacterController")]
     public StateMachine<RoguelikePlayer> statemachine;
     public Camera cam;
+    public float baseMoveSpeed = 5f;
     public SpriteRenderer sRenderer;
     public InputManager manager;
     public Transform rightHand;
     public Collider2D bodyColiider;
     public LayerMask enemyTargettingLayer;
     public LayerMask impassableLayers;
+
+    public VoidDelegate onGoldXpChanged;
 
     internal void SetPlayerNextScene(string toGoTo) {
 
@@ -71,6 +103,7 @@ public class RoguelikePlayer : StatUnit {
         StartCoroutine(LevelPhaseOut(toGoTo));
 
     }
+
 
     public override void CalculateStats() {
         base.CalculateStats();
@@ -90,10 +123,6 @@ public class RoguelikePlayer : StatUnit {
         SceneManager.LoadScene(toGoTo);
     }
 
-
-    
-    public float walkSpeed = 5f;
-
     internal Vector3 GetMousePosition() {
         Vector3 vec = cam.ScreenToWorldPoint(Input.mousePosition);
         vec.z = 0;
@@ -112,7 +141,7 @@ public class RoguelikePlayer : StatUnit {
         deathPrompt.gameObject.SetActive(false);
         pausedPrompt.gameObject.SetActive(false);
         transitioner.IntroTransition();
-        healthManager.UpdateHP();
+        healthManager.UpdateHP(0);
         
         statemachine = new StateMachine<RoguelikePlayer>(new RoguelikePlayerMoveState(), this);
         onTakeDamage += healthManager.UpdateHP;
@@ -123,9 +152,7 @@ public class RoguelikePlayer : StatUnit {
         SetAbilities();
         SetItems();
         SetRace(raceObject);
-        CalculateStats();
-        currentHP = currentStats.maxHP;
-        CalculateStats();
+        CalculateWithHP();
 
     }
 
@@ -157,7 +184,7 @@ public class RoguelikePlayer : StatUnit {
         }
 
         abilities = new List<Ability>();
-
+        int amt = 0;
         foreach (AbilityObject a in abilityObjects) {
             Ability ab = Instantiate(a.abilityPrefab, abilityGroupingingobject);
             AbilityButton button = Instantiate(abilityButtonprefab, buttonGroupingObject);
@@ -169,6 +196,14 @@ public class RoguelikePlayer : StatUnit {
             ab.transform.localEulerAngles = Vector3.zero;
             ab.CalculateCooldown();
             button.SetAbility(ab);
+            if (amt == 0) {
+
+            } else if (amt == 1) {
+
+            } else if (amt == 2) {
+
+            }
+            amt++;
             
         }
     }
@@ -235,7 +270,7 @@ public class RoguelikePlayer : StatUnit {
 
    
 
-    public void FlashForDamage() {
+    public void FlashForDamage(float amt) {
         canTakeDamage = false;
         StartCoroutine(DamageFlash());
     }
@@ -296,10 +331,9 @@ public class RoguelikePlayer : StatUnit {
         Vector3 dir = (rightHand.position - mousePoint).normalized;
         if (weapon && weapon.flipCorrect) {
 
-            if (dir.x > 0) {
+            if (mousePoint.x <= transform.position.x) {
                 weapon.spriteRenderer.flipY = true;
-            }
-            if (dir.x < 0) {
+            } else  {
                 weapon.spriteRenderer.flipY = false;
             }
         }
@@ -365,8 +399,11 @@ public class RoguelikePlayer : StatUnit {
         canTakeDamage = true;
     }
 
-
-
+    internal void AddItem(ItemObject item) {
+        items.Add(item);
+        SetItems();
+        CalculateStats();
+    }
 }
 
 
@@ -374,7 +411,7 @@ public class RoguelikePlayerMoveState : State<RoguelikePlayer> {
 
     public override void Update(StateMachine<RoguelikePlayer> obj) {
         if (obj.target.manager.horizontal != 0 || obj.target.manager.vertical != 0) {
-            obj.target.rb.velocity = new Vector2(obj.target.manager.horizontal, obj.target.manager.vertical) * obj.target.walkSpeed;
+            obj.target.rb.velocity = new Vector2(obj.target.manager.horizontal, obj.target.manager.vertical) * obj.target.baseMoveSpeed * (obj.target.currentStats.moveSpeed/100f);
         } else {
             obj.target.rb.velocity = Vector2.zero;
         }

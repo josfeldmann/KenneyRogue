@@ -9,7 +9,6 @@ public class Weapon : MonoBehaviour {
     public bool flipCorrect = false;
     public RoguelikePlayer player;
     public Sprite sprite;
-    public Collider2D pickupCollider;
     public SpriteRenderer spriteRenderer;
     public int level = 1;
 

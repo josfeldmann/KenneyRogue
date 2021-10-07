@@ -22,7 +22,7 @@ public class UIHealthBar : MonoBehaviour
         healthText.SetText(((int)AttachedUnit.currentHP) + "/" + ((int)AttachedUnit.maxHp));
     }
 
-    public void TakeDamage() {
+    public void TakeDamage(float amt) {
         fillImage.fillAmount = AttachedUnit.currentHP / AttachedUnit.maxHp;
         healthText.SetText(((int)AttachedUnit.currentHP) + "/" + ((int)AttachedUnit.maxHp));
     }

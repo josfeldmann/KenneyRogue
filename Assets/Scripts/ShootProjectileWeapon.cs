@@ -7,7 +7,7 @@ public class ShootProjectileWeapon : Weapon
 
     public float regularTimeBetweenAttacks = 1;
     public List<ProjectilePoint> projectilePoints;
-    public float time = 0;
+    [HideInInspector]public float time = 0;
     public AudioSource shootSFX;
 
     public override void SetTargetLayer(LayerMask mask) {
@@ -38,7 +38,7 @@ public class ShootProjectileWeapon : Weapon
                 p.Fire(vec);
             }
             time = Time.time + regularTimeBetweenAttacks/ (player.currentStats.attackSpeed/100);
-            shootSFX.Play();
+            if (shootSFX) shootSFX.Play();
         }
     }
 

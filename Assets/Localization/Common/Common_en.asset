@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Common_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: d8f6113aa0e76dd4fb1b51eb35f56b04, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 238398717952
+    m_Localized: CDR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 311442522112
+    m_Localized: Magic Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9024815104
+    m_Localized: Gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39718731776
+    m_Localized: Experience
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78411186176
+    m_Localized: Strength
+    m_Metadata:
+      m_Items: []
+  - m_Id: 133104910336
+    m_Localized: Intelligence
+    m_Metadata:
+      m_Items: []
+  - m_Id: 166692896768
+    m_Localized: Agility
+    m_Metadata:
+      m_Items: []
+  - m_Id: 182060826624
+    m_Localized: Attack Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 214172418048
+    m_Localized: Attack Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 578573549568
+    m_Localized: Move Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 622995423232
+    m_Localized: Affects Attack Damage, Attack Speed, and Move Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 840600109056
+    m_Localized: Affects HP and Attack Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 938147037184
+    m_Localized: Affects Spell Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1019713667072
+    m_Localized: Affects how fast the player moves
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1132360089600
+    m_Localized: Affects the strength of attacks and physical skills
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1221006704640
+    m_Localized: Affects the rate of attack and the speed of some skills and projectiles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1370726580224
+    m_Localized: Reduces the cooldown of all skills
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1438070325248
+    m_Localized: Affects the power of spells
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1597252550656
+    m_Localized: Can be spent to acquire items and training
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1678257143808
+    m_Localized: Can be exchanged for ability and stat upgrades
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

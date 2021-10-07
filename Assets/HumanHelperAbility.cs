@@ -2,12 +2,12 @@
 
 public class HumanHelperAbility : Ability {
 
-    public HumanHelper helperPrefab;
+    public MeleeEnemy helperPrefab;
 
     public override void SkillDown() {
         if (!onCooldown) {
             SetOnCooldown();
-            HumanHelper helper = Instantiate(helperPrefab, GetMouseClickPosition(), Quaternion.identity);
+            MeleeEnemy helper = Instantiate(helperPrefab, GetMouseClickPosition(), Quaternion.identity);
             
         }
     }

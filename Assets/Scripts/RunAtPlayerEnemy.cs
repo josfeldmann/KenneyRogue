@@ -36,7 +36,7 @@ public class RunAtPlayerEnemy : Unit
     private void Update() {
         if (GameManager.paused) return;
         if (target == null) {
-            target = Target.playertargets[0];
+            target = Target.GetPlayer();
             return;
         }
         stateMachine.Update();

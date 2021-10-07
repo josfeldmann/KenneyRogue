@@ -5,10 +5,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class TooltipMaster : MonoBehaviour
 {
+    public static float toolTipy = 100;
     public static TooltipMaster current;
-
+    public RectTransform canvasRect;
     [Header("Sections")]
     public GameObject titleSection;
     public GameObject statSection;
@@ -39,14 +41,38 @@ public class TooltipMaster : MonoBehaviour
         descriptionSection.SetActive(false);
     }
 
-    internal void SetItem(ItemObject itemObject, ItemIcon itemIcon) {
+    public void ClampTooltip() {
+        rect.anchoredPosition = new Vector2(Mathf.Clamp(rect.anchoredPosition.x, (rect.rect.width / 2), canvasRect.rect.width - (rect.rect.width / 2)), rect.anchoredPosition.y);
+    }
+
+    public void SetItemWorld(ItemObject itemObject, Transform t) {
+        SetItem(itemObject);
+        transform.position = Camera.main.WorldToScreenPoint(t.position) + new Vector3(0, 80, 0);
+        ClampTooltip();
+    }
+
+
+    public void SetStat(StatEnum statEnum, StatTextIcon statTextIcon) {
+
+        SetStat(statEnum);
+        transform.position = new Vector3(statTextIcon.transform.position.x, toolTipy, 0);
+        rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, toolTipy);
+        ClampTooltip();
+    }
+
+    public void SetItemIconUI(ItemObject itemObject, ItemIcon itemIcon) {
+        SetItem(itemObject);
+        transform.position = itemIcon.transform.position + new Vector3(0, 80, 0);
+        ClampTooltip();
+    }
+
+
+    internal void SetItem(ItemObject itemObject) {
         gameObject.SetActive(true);
         HideAllSections();
         titleSection.SetActive(true);
         itemImage.sprite = itemObject.itemSprite;
         titleText.SetText(itemObject.GetName());
-        transform.position = itemIcon.transform.position + new Vector3(0,80, 0);
-        rect.anchoredPosition = new Vector2(Mathf.Min(rect.anchoredPosition.x, (rect.rect.width/-2) ), rect.anchoredPosition.y);
         statSection.SetActive(true);
         ShowItemStats(itemObject);
     }
@@ -74,7 +100,8 @@ public class TooltipMaster : MonoBehaviour
         HideAllSections();
         titleSection.SetActive(true);
         descriptionSection.SetActive(true);
-        transform.position = button.transform.position + new Vector3(0, 100, 0);
+        transform.position = new Vector3(button.transform.position.x, toolTipy);
+        rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, toolTipy);
         if (button.isWeapon) {
             titleText.SetText(button.weapon.weaponObject.GetName());
             itemImage.sprite = button.weapon.weaponObject.weaponSprite;
@@ -84,6 +111,20 @@ public class TooltipMaster : MonoBehaviour
             itemImage.sprite = button.ability.abilityObject.abilitySprite;
             descriptionSetter.SetText(button.ability.GetDescription());
         }
+        ClampTooltip();
+    }
+
+    public void SetStat(StatEnum stat) {
+        gameObject.SetActive(true);
+        HideAllSections();
+        titleSection.SetActive(true);
+        descriptionSection.SetActive(true);
+
+        StatGroup s = StatDatabase.stats[stat];
+
+        titleText.text = s.GetName();
+        itemImage.sprite = s.sprite;
+        descriptionSetter.SetText(s.GetDescription());
 
     }
 }

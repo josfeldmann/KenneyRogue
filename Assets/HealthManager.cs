@@ -13,7 +13,7 @@ public class HealthManager : MonoBehaviour
     public Unit attachedUnit;
 
 
-    public void UpdateHP() {
+    public void UpdateHP(float amt) {
 
 
         if (attachedUnit.maxHp % 2 == 1) {

@@ -8,7 +8,7 @@ public class ShotgunWeapon : ShootProjectileWeapon {
         if (Time.time > time) {
             Vector3 vec = player.GetMousePosition();
             foreach (ProjectilePoint p in projectilePoints) {
-                p.SetDamage(player.currentStats.attackDamage * damagePerLevel[level - 1]);
+                p.SetDamage((int)(player.currentStats.attackDamage * damagePerLevel[level - 1]));
                 p.SetSpeed(shotSpeed);
                 p.Fire(vec);
             }

@@ -54,4 +54,4 @@ MonoBehaviour:
   cooldown: 0
   currentCooldownAmount: 0
   level: 1
-  helperPrefab: {fileID: 7808584549632926910, guid: 3913b31658009e9439a4b2e9576ce653, type: 3}
+  helperPrefab: {fileID: 8504427203778976324, guid: 62e5d1c54521bf34aa29f029bdf2340c, type: 3}
