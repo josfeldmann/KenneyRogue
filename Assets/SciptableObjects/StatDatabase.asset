@@ -157,4 +157,40 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 1
     sprite: {fileID: 1834597213, guid: 24a1a60a4adf6f24bb995b6fe19cdbb6, type: 3}
+  - statEnum: 12
+    statName:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 9024815104
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    description:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 1597252550656
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    sprite: {fileID: -1858713398, guid: 24a1a60a4adf6f24bb995b6fe19cdbb6, type: 3}
+  - statEnum: 13
+    statName:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 39718731776
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    description:
+      m_TableReference:
+        m_TableCollectionName: GUID:d8f6113aa0e76dd4fb1b51eb35f56b04
+      m_TableEntryReference:
+        m_KeyId: 1678257143808
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 1
+    sprite: {fileID: 47266681, guid: 24a1a60a4adf6f24bb995b6fe19cdbb6, type: 3}
   keysToSprites: []

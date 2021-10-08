@@ -95,6 +95,62 @@ MonoBehaviour:
     m_Key: ExperienceD
     m_Metadata:
       m_Items: []
+  - m_Id: 348919375314944
+    m_Key: Battle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348920763629568
+    m_Key: BattleD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348921837371392
+    m_Key: Hazard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348927348686848
+    m_Key: HazardD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348928342736896
+    m_Key: Town
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348929282260992
+    m_Key: townD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349569035255808
+    m_Key: Merchant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349571048521728
+    m_Key: MecrachntD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349572524916736
+    m_Key: Blacksmith
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349573799985152
+    m_Key: BlacksmithD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350096108273664
+    m_Key: Bazaar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350097983127552
+    m_Key: BazaarD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350369644003328
+    m_Key: Miniboss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350406017007616
+    m_Key: MinibossD
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

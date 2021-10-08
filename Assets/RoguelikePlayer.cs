@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 
@@ -124,7 +125,7 @@ public class RoguelikePlayer : StatUnit {
     }
 
     internal Vector3 GetMousePosition() {
-        Vector3 vec = cam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 vec = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         vec.z = 0;
         return vec;
     }
@@ -145,7 +146,7 @@ public class RoguelikePlayer : StatUnit {
         
         statemachine = new StateMachine<RoguelikePlayer>(new RoguelikePlayerMoveState(), this);
         onTakeDamage += healthManager.UpdateHP;
-        onTakeDamage += FlashForDamage;
+       // onTakeDamage += FlashForDamage;
         onDeath += Die;
         setup = true;
         SetWeapon(weaponObject);
@@ -325,7 +326,7 @@ public class RoguelikePlayer : StatUnit {
 
 
     public void AimRightHand() {
-        Vector3 mousePoint = cam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePoint = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         mousePoint.z = 0;
 
         Vector3 dir = (rightHand.position - mousePoint).normalized;

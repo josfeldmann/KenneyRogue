@@ -98,6 +98,63 @@ MonoBehaviour:
     m_Localized: Can be exchanged for ability and stat upgrades
     m_Metadata:
       m_Items: []
+  - m_Id: 348919375314944
+    m_Localized: Battle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348920763629568
+    m_Localized: An enemy encounter. Rewards gold and exp.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348921837371392
+    m_Localized: Hazard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348927348686848
+    m_Localized: An fight with an environmental hazard present. Gives gold, xp, and
+      a free utility item.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348928342736896
+    m_Localized: Town
+    m_Metadata:
+      m_Items: []
+  - m_Id: 348929282260992
+    m_Localized: Buy Items and heal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349569035255808
+    m_Localized: Merchant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349571048521728
+    m_Localized: Sells gems and armor pieces
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349572524916736
+    m_Localized: Blacksmith
+    m_Metadata:
+      m_Items: []
+  - m_Id: 349573799985152
+    m_Localized: Sells weapons and armor pieces
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350096108273664
+    m_Localized: Bazaar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350097983127552
+    m_Localized: Sells rare and powerful items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350369644003328
+    m_Localized: Miniboss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 350406017007616
+    m_Localized: A fight with a powerful foe that yields a lot of EXP and Gold
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
