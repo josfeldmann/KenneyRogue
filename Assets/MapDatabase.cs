@@ -5,6 +5,8 @@ using UnityEngine;
 public class MapDatabase : ScriptableObject {
     public static Dictionary<TileType, TileGroup> tileDict = null;
     public List<TileGroup> tiles = new List<TileGroup>();
+    
+
 
     public void Init() {
         if (tileDict == null) {

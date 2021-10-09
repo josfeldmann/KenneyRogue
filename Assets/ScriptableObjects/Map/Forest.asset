@@ -13,12 +13,20 @@ MonoBehaviour:
   m_Name: Forest
   m_EditorClassIdentifier: 
   key: forest
-  width: 5
-  height: 6
-  hazard: 7
-  numShops: 4
-  numArmory: 4
-  bazaar: 1
-  numberOfShops: 5
+  width: 9
+  height: 10
+  numberOfHazard: 6
+  numberOfShops: 2
+  numberOfArmory: 2
+  numberOfBazaar: 1
+  numberOfTowns: 4
   numberOfMiniBosses: 5
-  skillShop: 3
+  numberOfSkillShop: 3
+  rowTop: 1
+  rowBot: 1
+  rowLeft: 1
+  rowRight: 1
+  startSpot: {x: 4, y: 0}
+  bossSpotrange: {x: 1, y: 8}
+  mountainAmount: {x: 4, y: 10}
+  seedMountainAmount: {x: 3, y: 6}

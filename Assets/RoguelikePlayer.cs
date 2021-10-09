@@ -157,6 +157,8 @@ public class RoguelikePlayer : StatUnit {
 
     }
 
+    
+
     public void SetRace(RaceObject race) {
         raceObject = race;
         baseStats = raceObject.racialStats;

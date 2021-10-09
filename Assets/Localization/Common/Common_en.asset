@@ -155,6 +155,30 @@ MonoBehaviour:
     m_Localized: A fight with a powerful foe that yields a lot of EXP and Gold
     m_Metadata:
       m_Items: []
+  - m_Id: 380154323648512
+    m_Localized: Mountain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 380161982447616
+    m_Localized: Impassable may contain secret passageways
+    m_Metadata:
+      m_Items: []
+  - m_Id: 380163693723648
+    m_Localized: Boss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 380165539217408
+    m_Localized: Beat to finish the level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429351861207040
+    m_Localized: Mystery Event
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429355803852800
+    m_Localized: Strange events can occur on these spots
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -151,14 +151,38 @@ MonoBehaviour:
     m_Key: MinibossD
     m_Metadata:
       m_Items: []
+  - m_Id: 380154323648512
+    m_Key: Mountain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 380161982447616
+    m_Key: MountainD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 380163693723648
+    m_Key: Boss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 380165539217408
+    m_Key: BossD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429351861207040
+    m_Key: MysteryEvent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429355803852800
+    m_Key: MysteryEventD
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 6162706776304910359
+    rid: 6162706799958425750
   references:
     version: 2
     RefIds:
-    - rid: 6162706776304910359
+    - rid: 6162706799958425750
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
         m_CustomEpoch: 1633637970873
