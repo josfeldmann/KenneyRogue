@@ -86,7 +86,6 @@ public class RoguelikePlayer : StatUnit {
 
     [Header("CharacterController")]
     public StateMachine<RoguelikePlayer> statemachine;
-    public Camera cam;
     public float baseMoveSpeed = 5f;
     public SpriteRenderer sRenderer;
     public InputManager manager;
@@ -96,6 +95,9 @@ public class RoguelikePlayer : StatUnit {
     public LayerMask impassableLayers;
 
     public VoidDelegate onGoldXpChanged;
+
+    [Header("UI")]
+    public GameObject hotBar, itemBar;
 
     internal void SetPlayerNextScene(string toGoTo) {
 
@@ -125,7 +127,7 @@ public class RoguelikePlayer : StatUnit {
     }
 
     internal Vector3 GetMousePosition() {
-        Vector3 vec = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector3 vec = MapCam.current.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         vec.z = 0;
         return vec;
     }
@@ -214,6 +216,11 @@ public class RoguelikePlayer : StatUnit {
     public void SetItems() {
         foreach (ItemIcon itemIcon in itemIcons) {
             itemIcon.gameObject.SetActive(false);
+        }
+        if (items.Count <= 0) {
+            itemTransform.gameObject.SetActive(false);
+        } else {
+            itemTransform.gameObject.SetActive(true) ;
         }
         for (int i = itemIcons.Count; i < items.Count; i++) {
             ItemIcon iIcon = Instantiate(itemIconPrefab, itemTransform);
@@ -328,7 +335,7 @@ public class RoguelikePlayer : StatUnit {
 
 
     public void AimRightHand() {
-        Vector3 mousePoint = cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector3 mousePoint = MapCam.current.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         mousePoint.z = 0;
 
         Vector3 dir = (rightHand.position - mousePoint).normalized;
@@ -407,6 +414,23 @@ public class RoguelikePlayer : StatUnit {
         SetItems();
         CalculateStats();
     }
+
+
+
+    public void DisablePlayerWithoutUI() {
+        sRenderer.enabled = false;
+        hotBar.gameObject.SetActive(false);
+        itemBar.gameObject.SetActive(false);
+        deathPrompt.gameObject.SetActive(false);
+        pausedPrompt.gameObject.SetActive(false);
+        statemachine = new StateMachine<RoguelikePlayer>(new RoguelikePlayerDisabledState(), this);
+    }
+
+
+    public void DisablePlayerWithUI() {
+        sRenderer.enabled = false;
+        statemachine = new StateMachine<RoguelikePlayer>(new RoguelikePlayerDisabledState(), this);
+    }
 }
 
 
@@ -430,6 +454,10 @@ public class RoguelikePlayerMoveState : State<RoguelikePlayer> {
 
    
 
+}
+
+public class RoguelikePlayerDisabledState : State<RoguelikePlayer> {
+    
 }
 
 public class RoguelikePlayerDoNothingState : State<RoguelikePlayer> {

@@ -355,7 +355,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -376,7 +376,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -384,6 +384,48 @@ TextureImporter:
       bones: []
       spriteID: 33f48a7a39d4c6c408f8b80e86bb6955
       internalID: -1878631476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HexHazards_13
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 921a8e179297af9458a55602f9eb32fc
+      internalID: -723051158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cursor
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84b20d6f03f55ac4aa22f76175881dde
+      internalID: 1082877373
       vertices: []
       indices: 
       edges: []
@@ -405,10 +447,12 @@ TextureImporter:
       HexHazards_9: 2135433609
       HexHazards_5: -1174727514
       HexHazards_10: 811402593
+      Cursor: 1082877373
       HexHazards_4: 1953199275
       HexHazards_11: 830467564
       HexHazards_12: -1878631476
       HexHazards_8: -167597160
+      HexHazards_13: -723051158
       HexHazards_7: 1165138331
       HexHazards_6: -33556790
       HexHazards_3: -1688146773

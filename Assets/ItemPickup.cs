@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ItemPickup : MonoBehaviour
+public class ItemPickup : HoverBehaviour
 {
     public ItemObject item;
     public bool sellObject;
@@ -51,5 +51,13 @@ public class ItemPickup : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    public override void OnHoverEnter() {
+        OnMouseEnter();
+    }
+
+    public override void OnHoverExit() {
+        OnMouseExit();
     }
 }

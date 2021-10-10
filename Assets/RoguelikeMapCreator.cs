@@ -34,7 +34,7 @@ public class TileGroup {
     }
 
     public string GetDescription() {
-        return tileName.GetLocalizedString();
+        return tileDescription.GetLocalizedString();
     }
 
 }
@@ -43,20 +43,22 @@ public class RoguelikeMapCreator : MonoBehaviour {
     public string dummyseed;
     public static RogueHex[,] hexGrid = null;
     public static RogueHexMap rogueMap;
-    public static string currentSeed = null;
+    
+    public static Vector2Int playerSpot = new Vector2Int();
     public MapDatabase mapDatabase;
     public RogueHexMap dummyMap;
     public float xOffset = 2, yOffset = 1.5f;
     public HexNode nodePrefab;
     public HexNode[,] nodes = null;
     public Transform nodeGrouping;
+    public MapPlayer mapPlayer;
 
     private void Awake() {
         
         mapDatabase.Init();
         if (hexGrid == null) {
-            if (currentSeed == null) currentSeed = dummyseed;
-            Random.seed = currentSeed.GetHashCode();
+            if (RoguelikeGameManager.currentSeed == null) RoguelikeGameManager.currentSeed = dummyseed;
+            Random.InitState(RoguelikeGameManager.currentSeed.GetHashCode());
             if (rogueMap == null) {
                 rogueMap = dummyMap;
             }
@@ -68,12 +70,20 @@ public class RoguelikeMapCreator : MonoBehaviour {
             hexGrid[endSpot.x, endSpot.y].tileType = TileType.boss;
             MakeSeedMountains();
             MakeExtraMountains();
+            playerSpot = rogueMap.startSpot;
             
         }
         GenerateNodesFromGrids();
         SortingOrderFix();
+        controller = new StateMachine<RoguelikeMapCreator>(new MapIdle(), this);
+        mapPlayer.transform.position = nodes[playerSpot.x, playerSpot.y].transform.position;
     }
 
+    public StateMachine<RoguelikeMapCreator> controller;
+
+    public void Update() {
+        
+    }
 
     public void MakeSeedMountains() {
         int seedMountainAmount = Random.Range(rogueMap.seedMountainAmount.x, rogueMap.seedMountainAmount.y);
@@ -111,7 +121,6 @@ public class RoguelikeMapCreator : MonoBehaviour {
 
 
     }
-
     public void MakeExtraMountains() {
         int numMountains = Random.Range(rogueMap.mountainAmount.x, rogueMap.mountainAmount.y);
         if (numMountains <= 0) return;
@@ -145,7 +154,6 @@ public class RoguelikeMapCreator : MonoBehaviour {
 
 
     }
-
     public void GenerateGrid() {
         hexGrid = new RogueHex[rogueMap.width + 1, rogueMap.height];
         for (int y = 0; y < rogueMap.height; y++) {
@@ -193,7 +201,6 @@ public class RoguelikeMapCreator : MonoBehaviour {
             }
         }
     }
-
     public void MakeWalls() {
         if (rogueMap.rowTop) {
             for (int i = 0; i < rogueMap.width + 1; i++) {
@@ -232,7 +239,6 @@ public class RoguelikeMapCreator : MonoBehaviour {
             }
         }
     }
-
     public void SortingOrderFix() {
         for (int y = 0; y < rogueMap.height; y++) {
             for (int x = 0; x < (rogueMap.width + 1); x++) {
@@ -242,8 +248,6 @@ public class RoguelikeMapCreator : MonoBehaviour {
             }
         }
     }
-
-
     public void MakeTiles(TileType type, int number) {
         List<RogueHex> list = new List<RogueHex>();
         for (int y = 0; y < rogueMap.height; y++) {
@@ -267,7 +271,6 @@ public class RoguelikeMapCreator : MonoBehaviour {
             list.Remove(h);
         }
     }
-
     public void GenerateRandomSpaces() {
         MakeTiles(TileType.bazaar, rogueMap.numberOfBazaar);
         MakeTiles(TileType.shop, rogueMap.numberOfShops);
@@ -283,6 +286,7 @@ public class RoguelikeMapCreator : MonoBehaviour {
             for (int x = 0; x < (rogueMap.width + 1); x++) {
                 if (hexGrid[x, y] != null) {
                     HexNode h = Instantiate(nodePrefab, nodeGrouping);
+                    h.map = this;
                     h.associatedHex = hexGrid[x, y];
                     nodes[x, y] = h;
                     if (y % 2 == 0) {
@@ -310,4 +314,19 @@ public class RoguelikeMapCreator : MonoBehaviour {
             }
         }
     }
+
+
+    public  MapCursor cursor;
+    public Vector2Int cursorCoordinate;
+    public void SetCursor(HexNode hex) {
+        cursor.transform.position = hex.transform.position;
+        cursorCoordinate = hex.associatedHex.index;
+        hex.OnMouseEnter();
+    }
+
+
+}
+
+public class MapIdle : State<RoguelikeMapCreator> {
+
 }

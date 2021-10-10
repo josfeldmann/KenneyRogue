@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b37b6ba68e3096479a5675e9d78d332, type: 3}
   m_Name: FanOfKnives
   m_EditorClassIdentifier: 
+  inRandomPool: 1
   abilityKey: fanOfKnives
   abilityName: Fan Of Knives
   abilitySprite: {fileID: 7980332904363644676, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}

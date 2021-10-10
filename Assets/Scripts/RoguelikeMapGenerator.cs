@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 
@@ -171,6 +172,17 @@ public static class MyExtensions {
 
     public static T PickRandom<T>(this List<T> list) {
         return list[Random.Range(0, list.Count)];
+    }
+
+
+    public static string RemoveSpecialCharacters(this string str) {
+        StringBuilder sb = new StringBuilder();
+        foreach (char c in str) {
+            if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '.' || c == '_') {
+                sb.Append(c);
+            }
+        }
+        return sb.ToString();
     }
 
 

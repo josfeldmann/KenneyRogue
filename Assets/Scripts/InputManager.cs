@@ -69,7 +69,7 @@ public class InputManager : MonoBehaviour {
     }
 
     public void OnWeapon(CallbackContext context) {
-        print("Here " + Time.time);
+        //print("Here " + Time.time);
         if (context.started) {
             firePressed = true;
             fireheld = true;
@@ -83,7 +83,7 @@ public class InputManager : MonoBehaviour {
 
 
     public void OnSkillTwo(CallbackContext context) {
-        print("Here " + Time.time);
+     //   print("Here " + Time.time);
         if (context.started) {
             skill2Down = true;
             skill2Held = true;
@@ -99,7 +99,7 @@ public class InputManager : MonoBehaviour {
 
 
     public void OnSkillOne(CallbackContext context) {
-        print("Here " + Time.time);
+       // print("Here " + Time.time);
         if (context.started) {
             skill1Down = true;
             skill1Held = true;
@@ -114,7 +114,7 @@ public class InputManager : MonoBehaviour {
 
 
     public void OnSkillThree(CallbackContext context) {
-        print("Here " + Time.time);
+      //  print("Here " + Time.time);
         if (context.started) {
             skill3Down = true;
             skill3Held = true;
