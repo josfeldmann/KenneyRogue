@@ -123,7 +123,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 158925619785510393, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -231,6 +231,8 @@ MonoBehaviour:
     moveSpeed: 0
     coolDownReduction: 0
   items: []
+  gold: 0
+  xp: 0
   isEnemy: 0
   baseTimeInBetweenAttacks: 2
   layerMask:
@@ -367,7 +369,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 4437457761642172336, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

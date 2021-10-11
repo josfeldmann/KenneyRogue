@@ -36,4 +36,8 @@ public class RunSelectFigure :HoverBehaviour
         abilityTwo.sprite = abilities[1].abilitySprite;
         weaponSprite.sprite = weaponObject.weaponSprite;
     }
+
+    public void SelectThisRunner() {
+        ModeSelector.instance.StartNormalRunWith(this);
+    }
 }

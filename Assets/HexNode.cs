@@ -32,5 +32,8 @@ public class HexNode : HoverBehaviour {
  
     public void SetTile() {
         spriteRenderer.sprite = tileInfo.tileSprite;
+        if (associatedHex.visited) {
+            spriteRenderer.material = RoguelikeMapCreator.visitedMaterial;
+        } 
     }
 }

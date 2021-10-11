@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public enum TileType {
@@ -14,12 +15,13 @@ public class RogueHex {
     public TileType tileType;
     public Vector2Int index;
     public List<Vector2Int> neighbours = new List<Vector2Int>();
-    bool visited = false;
+    public bool visited = false;
 
     public RogueHex(TileType tileType, Vector2Int index, List<Vector2Int> neighbours) {
         this.tileType = tileType;
         this.index = index;
         this.neighbours = neighbours;
+        
     }
 }
 
@@ -39,11 +41,22 @@ public class TileGroup {
 
 }
 
+
+public static class SceneNames {
+    public const string MainMenu = "MainMenu", MapLevel = "MapLevel", battleLevel = "BattleLevel", ShopLevel = "ShopLevel", BlackSmithLevel = "BlackSmithLevel", TownLevel = "TownLevel", BazaarLevel = "BazaarLevel" ;
+    
+}
+
+
 public class RoguelikeMapCreator : MonoBehaviour {
+
+
+
     public string dummyseed;
     public static RogueHex[,] hexGrid = null;
     public static RogueHexMap rogueMap;
-    
+    public static Material visitedMaterial;
+    public Material vMaterial;
     public static Vector2Int playerSpot = new Vector2Int();
     public MapDatabase mapDatabase;
     public RogueHexMap dummyMap;
@@ -54,7 +67,7 @@ public class RoguelikeMapCreator : MonoBehaviour {
     public MapPlayer mapPlayer;
 
     private void Awake() {
-        
+        visitedMaterial = vMaterial;
         mapDatabase.Init();
         if (hexGrid == null) {
             if (RoguelikeGameManager.currentSeed == null) RoguelikeGameManager.currentSeed = dummyseed;
@@ -77,12 +90,14 @@ public class RoguelikeMapCreator : MonoBehaviour {
         SortingOrderFix();
         controller = new StateMachine<RoguelikeMapCreator>(new MapIdle(), this);
         mapPlayer.transform.position = nodes[playerSpot.x, playerSpot.y].transform.position;
+        mapPlayer.sprite.sprite = RoguelikeGameManager.player.raceObject.raceSprite;
+        RoguelikeGameManager.player.DisablePlayerWithUI();
     }
 
     public StateMachine<RoguelikeMapCreator> controller;
 
     public void Update() {
-        
+        controller.Update();
     }
 
     public void MakeSeedMountains() {
@@ -324,9 +339,131 @@ public class RoguelikeMapCreator : MonoBehaviour {
         hex.OnMouseEnter();
     }
 
+    internal void PlayerMoveToHex(RogueHex targetHex) {
+        playerSpot = targetHex.index;
+        mapPlayer.transform.position = nodes[targetHex.index.x, targetHex.index.y].transform.position;
+        VisitTile(targetHex);
+    }
+
+
+    public void VisitTile(RogueHex hex) {
+
+        bool changeScene = false;
+        string sceneName = "";
+
+        switch (hex.tileType) {
+            case TileType.battle:
+                if (hex.visited) {
+                    
+                } else {
+                    changeScene = true;
+                    sceneName = SceneNames.battleLevel;
+                }
+                break;
+            case TileType.town:
+                    changeScene = true;
+                    sceneName = SceneNames.TownLevel;
+                break;
+            case TileType.hazard:
+                if (hex.visited) {
+
+                } else {
+                    changeScene = true;
+                    sceneName = SceneNames.battleLevel;
+                }
+                break;
+            case TileType.shop:
+                changeScene = true;
+                sceneName = SceneNames.ShopLevel;
+                break;
+            case TileType.armory:
+                changeScene = true;
+                sceneName = SceneNames.BlackSmithLevel;
+                break;
+            case TileType.bazaar:
+                changeScene = true;
+                sceneName = SceneNames.BazaarLevel;
+                break;
+            case TileType.mountainPass:
+                if (hex.visited) {
+
+                } else {
+                    changeScene = true;
+                    sceneName = SceneNames.battleLevel;
+                }
+                break;
+            case TileType.mountain:
+                break;
+            case TileType.miniboss:
+                if (hex.visited) {
+
+                } else {
+                    changeScene = true;
+                    sceneName = SceneNames.battleLevel;
+                }
+                break;
+            case TileType.none:
+                break;
+            case TileType.boss:
+                sceneName = SceneNames.battleLevel;
+                break;
+            case TileType.startSpot:
+                break;
+            case TileType.hiddentreasure:
+                break;
+            case TileType.mysteryEvent:
+                break;
+        }
+
+        hex.visited = true;
+        if (changeScene) {
+            TooltipMaster.current.CloseToolTip();
+            SceneManager.LoadScene(sceneName);
+        } else {
+            controller.ChangeState(new MapIdle());
+        }
+    }
 
 }
 
 public class MapIdle : State<RoguelikeMapCreator> {
+
+
+    public override void Update(StateMachine<RoguelikeMapCreator> obj) {
+        if (RoguelikeGameManager.player.manager.firePressed) {
+            if (obj.target.cursor.gameObject.activeInHierarchy) {
+                if (RoguelikeMapCreator.hexGrid[RoguelikeMapCreator.playerSpot.x, RoguelikeMapCreator.playerSpot.y].neighbours.Contains(obj.target.cursorCoordinate)) {
+                    RogueHex hex = RoguelikeMapCreator.hexGrid[obj.target.cursorCoordinate.x, obj.target.cursorCoordinate.y];
+                    if (hex.tileType != TileType.mountain) {
+                        obj.ChangeState(new MoveToTileState(hex));
+                    }
+                }
+            }
+        }
+    }
+
+
+
+}
+
+public class MoveToTileState : State<RoguelikeMapCreator> {
+    public RogueHex targetHex;
+    public HexNode node;
+    public MoveToTileState(RogueHex h) {
+        targetHex = h;
+
+    }
+
+    public override void Enter(StateMachine<RoguelikeMapCreator> obj) {
+        node = obj.target.nodes[targetHex.index.x, targetHex.index.y];
+    }
+
+    public override void Update(StateMachine<RoguelikeMapCreator> obj) {
+        if (obj.target.mapPlayer.transform.position != node.transform.position) {
+            obj.target.mapPlayer.transform.position = Vector3.MoveTowards(obj.target.mapPlayer.transform.position, node.transform.position, 5 * Time.deltaTime);
+        } else {
+            obj.target.PlayerMoveToHex(targetHex);
+        }
+    }
 
 }

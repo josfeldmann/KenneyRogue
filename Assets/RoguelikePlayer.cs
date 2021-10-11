@@ -143,7 +143,7 @@ public class RoguelikePlayer : StatUnit {
         canWin = true;
         deathPrompt.gameObject.SetActive(false);
         pausedPrompt.gameObject.SetActive(false);
-        transitioner.IntroTransition();
+        //transitioner.IntroTransition();
         healthManager.UpdateHP(0);
         
         statemachine = new StateMachine<RoguelikePlayer>(new RoguelikePlayerMoveState(), this);
@@ -156,7 +156,10 @@ public class RoguelikePlayer : StatUnit {
         SetItems();
         SetRace(raceObject);
         CalculateWithHP();
-
+        sRenderer.enabled = true;
+        sRenderer.sprite = raceObject.raceSprite;
+        hotBar.gameObject.SetActive(true);
+        itemBar.gameObject.SetActive(true);
     }
 
     
@@ -419,6 +422,7 @@ public class RoguelikePlayer : StatUnit {
 
     public void DisablePlayerWithoutUI() {
         sRenderer.enabled = false;
+        if (weapon) weapon.gameObject.SetActive(false);
         hotBar.gameObject.SetActive(false);
         itemBar.gameObject.SetActive(false);
         deathPrompt.gameObject.SetActive(false);
@@ -426,8 +430,15 @@ public class RoguelikePlayer : StatUnit {
         statemachine = new StateMachine<RoguelikePlayer>(new RoguelikePlayerDisabledState(), this);
     }
 
+    public void Reenable() {
+        weapon.gameObject.SetActive(true);
+        sRenderer.enabled = true;
+        statemachine = new StateMachine<RoguelikePlayer>(new RoguelikePlayerMoveState(), this);
+    }
+
 
     public void DisablePlayerWithUI() {
+        if (weapon) weapon.gameObject.SetActive(false);
         sRenderer.enabled = false;
         statemachine = new StateMachine<RoguelikePlayer>(new RoguelikePlayerDisabledState(), this);
     }
@@ -457,7 +468,9 @@ public class RoguelikePlayerMoveState : State<RoguelikePlayer> {
 }
 
 public class RoguelikePlayerDisabledState : State<RoguelikePlayer> {
-    
+    public override void Enter(StateMachine<RoguelikePlayer> obj) {
+        obj.target.rb.velocity = new Vector2();
+    }
 }
 
 public class RoguelikePlayerDoNothingState : State<RoguelikePlayer> {

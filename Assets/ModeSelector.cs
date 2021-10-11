@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class ModeSelector : MonoBehaviour {
 
@@ -62,6 +62,21 @@ public class ModeSelector : MonoBehaviour {
             RoguelikeGameManager.SetProfile(s);
             SetMainMenu();
         }
+
+
+    }
+
+    internal void StartNormalRunWith(RunSelectFigure runSelectFigure) {
+
+        HideAll();
+        player.raceObject = runSelectFigure.race;
+        player.weaponObject = runSelectFigure.weaponObject;
+        player.transform.position = runSelectFigure.transform.position;
+        List<AbilityObject> abilitiesToAdd = new List<AbilityObject>(runSelectFigure.abilities);
+        abilitiesToAdd.Insert(0,  runSelectFigure.race.racialAbility);
+        player.items = new List<ItemObject>();
+        player.abilityObjects = abilitiesToAdd;
+        player.Setup();
 
 
     }
@@ -160,6 +175,12 @@ public class ModeSelector : MonoBehaviour {
         figure.abilities = new List<AbilityObject>() { aOne, aTwo };
         figure.SetVisual();
 
+    }
+
+    public void StartRun() {
+        player.DisablePlayerWithUI();
+        player.transitioner.IntroTransition();
+        SceneManager.LoadScene("MapLevel");
     }
 
 
