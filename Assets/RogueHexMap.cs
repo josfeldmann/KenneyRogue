@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 [CreateAssetMenu(menuName = "Data/RogueHexMap")]
 public class RogueHexMap : ScriptableObject {
@@ -17,4 +18,7 @@ public class RogueHexMap : ScriptableObject {
     public Vector2Int bossSpotrange = new Vector2Int(1, 7);
     public Vector2Int mountainAmount = new Vector2Int(3, 10);
     public Vector2Int seedMountainAmount = new Vector2Int(0, 3);
+
+    public List<BattleMap> battleMaps = new List<BattleMap>();
+
 }
