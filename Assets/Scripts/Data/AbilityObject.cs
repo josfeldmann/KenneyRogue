@@ -22,3 +22,19 @@ public class AbilityObject : TrackedObject {
 }
 
 
+[CreateAssetMenu(menuName = "Character/AbilityUpgrade")]
+public class AbilityUpgrade : TrackedObject {
+
+    public string upgradeKey = "";
+    public string upgradeName = "";
+
+    public override string GetName() {
+        return upgradeName;
+    }
+
+    public override string GetKey() {
+        return upgradeKey;
+    }
+}
+
+

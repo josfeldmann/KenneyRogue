@@ -19,6 +19,6 @@ public class RogueHexMap : ScriptableObject {
     public Vector2Int mountainAmount = new Vector2Int(3, 10);
     public Vector2Int seedMountainAmount = new Vector2Int(0, 3);
 
-    public List<BattleMap> battleMaps = new List<BattleMap>();
-
+    //public List<BattleMap> battleMaps = new List<BattleMap>();
+    public List<StatUnit> enemyPrefabs = new List<StatUnit>();
 }

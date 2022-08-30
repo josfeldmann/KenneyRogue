@@ -61,6 +61,8 @@ public class StatUnit : Unit {
 
 public class RoguelikePlayer : StatUnit {
 
+    public static List<RoguelikePlayer> players = new List<RoguelikePlayer>();
+
 
     public bool inCustomMovement = false;
     
@@ -160,6 +162,9 @@ public class RoguelikePlayer : StatUnit {
         sRenderer.sprite = raceObject.raceSprite;
         hotBar.gameObject.SetActive(true);
         itemBar.gameObject.SetActive(true);
+        if (!players.Contains(this)) {
+            players.Add(this);
+        }
     }
 
     
@@ -442,6 +447,8 @@ public class RoguelikePlayer : StatUnit {
         sRenderer.enabled = false;
         statemachine = new StateMachine<RoguelikePlayer>(new RoguelikePlayerDisabledState(), this);
     }
+
+    
 }
 
 

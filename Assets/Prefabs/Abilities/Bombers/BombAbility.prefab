@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 761159865323380888}
-  - component: {fileID: 761159865323380889}
+  - component: {fileID: 870050712250839942}
   m_Layer: 0
-  m_Name: HumanHelperAbility
+  m_Name: BombAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &761159865323380889
+--- !u!114 &870050712250839942
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 761159865323380870}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21660af3eeafc13479a3d1c313b9e707, type: 3}
+  m_Script: {fileID: 11500000, guid: 97f463ba947b25841a06d3493dcc18bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
@@ -54,4 +54,4 @@ MonoBehaviour:
   cooldown: 0
   currentCooldownAmount: 0
   level: 1
-  bombPrefab: {fileID: 8504427203778976324, guid: 62e5d1c54521bf34aa29f029bdf2340c, type: 3}
+  bombPrefab: {fileID: 8504427203778976324, guid: 6ff8dfc80e327d24f88c01513656c10e, type: 3}

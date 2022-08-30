@@ -11,6 +11,7 @@ public class WorldHoverCaster : MonoBehaviour
     public HoverBehaviour currentbehaviour;
     RaycastHit2D hit;
     private void Update() {
+        if (MapCam.current == null) return;
         hit = Physics2D.Raycast(MapCam.current.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Vector3.forward, 1, layerMask);
         if (hit) {
             if (cache != hit.collider.gameObject) {

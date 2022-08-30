@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
-  rb: {fileID: 0}
+  rb: {fileID: 6382482851119818944}
   maxHp: 5
   currentHP: 5
   canTakeDamage: 1
@@ -180,6 +180,8 @@ MonoBehaviour:
     moveSpeed: 0
     coolDownReduction: 0
   items: []
+  gold: 0
+  xp: 0
   targetMask:
     serializedVersion: 2
     m_Bits: 64
@@ -313,6 +315,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 6382482851119818949}
     m_Modifications:
     - target: {fileID: 537765166878857520, guid: 46974177c8059e94ebab86b895db3289, type: 3}
@@ -368,6 +371,7 @@ PrefabInstance:
       value: SpriteHealthBar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 46974177c8059e94ebab86b895db3289, type: 3}
 --- !u!4 &6910110381150388688 stripped
 Transform:

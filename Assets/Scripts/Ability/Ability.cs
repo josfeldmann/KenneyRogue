@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class Colors {
@@ -81,6 +82,28 @@ public class Ability : MonoBehaviour {
         
         return player.GetMousePosition();
     }
+
+    public List<Vector3> GetSpotsAroundPoint(Vector3 point, int number, float angleOffset, float radius) {
+        List<Vector3> vec = new List<Vector3>();
+
+        Vector2 startingpos = new Vector2((float)Math.Cos(angleOffset * Math.PI / 180), (float)Math.Sin(angleOffset * Math.PI / 180));
+
+        for (int i = 0; i < number; i++) {
+
+            float angle = angleOffset + (i * 360f / number);
+
+            Vector3 v = new Vector3((float)Math.Cos(angle  * Math.PI / 180), (float)Math.Sin(angle * Math.PI / 180), 0).normalized * radius;
+            v += point;
+            vec.Add(v);
+
+
+        }
+
+
+        return vec;
+    }
+
+
 
     public virtual string GetDescription() {
         return "Description";

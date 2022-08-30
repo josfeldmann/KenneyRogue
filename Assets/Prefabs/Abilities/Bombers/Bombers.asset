@@ -16,4 +16,4 @@ MonoBehaviour:
   abilityKey: bobmbers
   abilityName: Bombers
   abilitySprite: {fileID: 4021927434421410275, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
-  abilityPrefab: {fileID: 2512844129076766431, guid: 8f0f62d7ad2c91a4bbfadb9c65acb2c8, type: 3}
+  abilityPrefab: {fileID: 870050712250839942, guid: aea5f57b1e1331747a69f233bb49f206, type: 3}

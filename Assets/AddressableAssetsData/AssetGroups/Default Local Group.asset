@@ -16,7 +16,11 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 4384daf7985c3514da022754d2f77a05
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 9641d4d9c7468df47a450ada2901f22c
+    m_Address: Assets/Prefabs/Maps/Forest/MapPrefab.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 5f7a3c89d25bf774db43f481a75a98a2, type: 2}
   m_SchemaSet:

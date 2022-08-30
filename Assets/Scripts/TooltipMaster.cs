@@ -81,7 +81,7 @@ public class TooltipMaster : MonoBehaviour
         HideAllSections();
         titleSection.SetActive(true);
         descriptionSection.SetActive(true);
-
+        itemImage.sprite = hexNode.spriteRenderer.sprite;
         titleText.SetText(MapDatabase.tileDict[hexNode.associatedHex.tileType].GetName());
         descriptionSetter.SetText(MapDatabase.tileDict[hexNode.associatedHex.tileType].GetDescription());
         // transform.position = Camera.main.WorldToScreenPoint(hexNode.transform.position) + new Vector3(0, 80, 0);

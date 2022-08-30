@@ -8,6 +8,7 @@ public class BattleMap : MonoBehaviour
     public static BattleMap current;
     public float xmin, xmax, ymin, ymax;
 
+    public PlayerSpot playerSpot;
     public List<EnemySpawnSpot> spawnSpot = new List<EnemySpawnSpot>();
 
 

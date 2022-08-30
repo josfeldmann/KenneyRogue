@@ -418,6 +418,9 @@ public class RoguelikeMapCreator : MonoBehaviour {
         hex.visited = true;
         if (changeScene) {
             TooltipMaster.current.CloseToolTip();
+            foreach (RoguelikePlayer p in RoguelikePlayer.players) {
+                p.transform.position = new Vector3(0, 0, 0);
+            }
             SceneManager.LoadScene(sceneName);
         } else {
             controller.ChangeState(new MapIdle());

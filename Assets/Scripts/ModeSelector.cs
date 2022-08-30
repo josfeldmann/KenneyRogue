@@ -180,8 +180,12 @@ public class ModeSelector : MonoBehaviour {
     public void StartRun() {
         player.DisablePlayerWithUI();
         player.transitioner.IntroTransition();
-        SceneManager.LoadScene("MapLevel");
+        RoguelikeGameManager.GoToMapLevel();
     }
 
 
 }
+
+
+
+
