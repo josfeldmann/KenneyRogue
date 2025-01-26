@@ -294,12 +294,12 @@ public class PlayerMoveState : State<OldRoguelikePlayer> {
 
     public override void Update(StateMachine<OldRoguelikePlayer> obj) {
         if (obj.target.manager.horizontal != 0 || obj.target.manager.vertical != 0) {
-            obj.target.rb.velocity = new Vector2(obj.target.manager.horizontal, obj.target.manager.vertical) * obj.target.walkSpeed;
+            obj.target.rb.linearVelocity = new Vector2(obj.target.manager.horizontal, obj.target.manager.vertical) * obj.target.walkSpeed;
         } else {
-            obj.target.rb.velocity = Vector2.zero;
+            obj.target.rb.linearVelocity = Vector2.zero;
         }
 
-        obj.target.rb.velocity += obj.target.pushBack;
+        obj.target.rb.linearVelocity += obj.target.pushBack;
         obj.target.DecreasePushBack();
 
 
@@ -327,7 +327,7 @@ public class PlayerMoveState : State<OldRoguelikePlayer> {
 
 public class DoNothingState : State<OldRoguelikePlayer> {
     public override void Update(StateMachine<OldRoguelikePlayer> obj) {
-        obj.target.rb.velocity = obj.target.pushBack;
+        obj.target.rb.linearVelocity = obj.target.pushBack;
         obj.target.DecreasePushBack();
         if (obj.target.sRenderer.transform.parent == obj.target.transform &&  obj.target.pushBack == Vector2.zero) {
             obj.target.sRenderer.transform.SetParent(obj.target.transform.parent);

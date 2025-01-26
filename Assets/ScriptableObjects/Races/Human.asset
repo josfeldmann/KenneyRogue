@@ -15,6 +15,7 @@ MonoBehaviour:
   raceKey: human
   raceName: Human
   raceSprite: {fileID: -341190111982731225, guid: 284534ea9c1feea4ab68a7a80fb8f999, type: 3}
+  raceDescription: A jack of all trades
   racialStats:
     maxHP: 400
     maxMana: 10

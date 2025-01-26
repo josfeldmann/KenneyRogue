@@ -43,11 +43,19 @@ public static class SaveUtility {
     }
 
     public static string GetSaveDirectory() {
+        string res = "";
+        
         if (Application.platform == RuntimePlatform.WindowsEditor) {
-            return Application.dataPath + "/Saves/";
+            
+            res = Application.dataPath + "/Saves/";
         } else {
-            return Application.persistentDataPath + "/Saves/";
+            res = Application.persistentDataPath + "/Saves/";
         }
+
+        if (!Directory.Exists(res)) {
+            Directory.CreateDirectory(res);
+        }
+        return res;
     }
 
     public const string SavedProfileKey = "SavedProfile";

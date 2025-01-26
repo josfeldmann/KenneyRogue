@@ -8,6 +8,9 @@ public class RaceObject : TrackedObject {
     public string raceKey;
     public string raceName;
     public Sprite raceSprite;
+
+    [TextArea]
+    public string raceDescription;
  
     public override string GetName() {
         return raceName;

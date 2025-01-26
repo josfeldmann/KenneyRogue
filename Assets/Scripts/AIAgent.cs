@@ -17,7 +17,7 @@ public class AIAgent : MonoBehaviour
     }
     public void Stop() {
 
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
     }
 
     public void StartOnPath(Path p) {
@@ -36,7 +36,7 @@ public class AIAgent : MonoBehaviour
         if (!seeking) return;
         if (currentWaypoint >= path.vectorPath.Count) {
             seeking = false;
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
             return;
         }
 
@@ -46,13 +46,13 @@ public class AIAgent : MonoBehaviour
             currentWaypoint++;
             if (currentWaypoint >= path.vectorPath.Count) {
                 seeking = false;
-                rb.velocity = Vector2.zero;
+                rb.linearVelocity = Vector2.zero;
                 return;
             }
         }
 
         Vector2 dir = (((Vector2)path.vectorPath[currentWaypoint]) - rb.position).normalized;
-        rb.velocity = dir * speed;
+        rb.linearVelocity = dir * speed;
 
     }
 

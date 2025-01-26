@@ -82,7 +82,7 @@ public class WaitTillInRange : State<RunAtPlayerEnemy> {
 
 public class RunAtPlayerRunState : State<RunAtPlayerEnemy> {
     public override void FixedUpdate(StateMachine<RunAtPlayerEnemy> obj) {
-        obj.target.rb.velocity =  ((obj.target.target.transform.position - obj.target.transform.position).normalized * obj.target.runSpeed);
+        obj.target.rb.linearVelocity =  ((obj.target.target.transform.position - obj.target.transform.position).normalized * obj.target.runSpeed);
     }
 
     public override void OnCollisionEnter2D(Collision2D col, StateMachine<RunAtPlayerEnemy> obj) {
@@ -99,7 +99,7 @@ public class RunAtPlayerFreezeState : State<RunAtPlayerEnemy> {
     private float endTime = 0;
     public override void Enter(StateMachine<RunAtPlayerEnemy> obj) {
         endTime = Time.time + obj.target.freezeAfterHit;
-        obj.target.rb.velocity = Vector2.zero;
+        obj.target.rb.linearVelocity = Vector2.zero;
     }
 
     public override void Update(StateMachine<RunAtPlayerEnemy> obj) {

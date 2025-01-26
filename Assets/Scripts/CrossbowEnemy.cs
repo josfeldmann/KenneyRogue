@@ -93,9 +93,9 @@ public class CrossBowEnemyIdle : State<CrossbowEnemy> {
 
     public override void Update(StateMachine<CrossbowEnemy> obj) {
         obj.target.AimAtTarget();
-        obj.target.rb.velocity = walkDirection * moveSpeed;
+        obj.target.rb.linearVelocity = walkDirection * moveSpeed;
         if (AttackTime < Time.time) {
-            obj.target.rb.velocity = Vector2.zero;
+            obj.target.rb.linearVelocity = Vector2.zero;
             obj.ChangeState(new CrossbowEnemyAttack());
         }
     }

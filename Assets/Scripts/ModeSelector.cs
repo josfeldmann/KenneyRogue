@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+
 public class ModeSelector : MonoBehaviour {
 
     public static ModeSelector instance;
@@ -20,6 +22,15 @@ public class ModeSelector : MonoBehaviour {
     public RunSelectFigure dailyRun, customRun, questRun;
 
 
+    public GameObject AbilityDescriptorMaster;
+
+    public SimpleDescriptionBox raceBox;
+    public SimpleDescriptionBox weaponBox;
+    public SimpleDescriptionBox abilityOneBox;
+    public SimpleDescriptionBox abilityTwoBox;
+    public SimpleDescriptionBox raceAbilityBox;
+
+
 
     public GameObject MainMenu;
     public GameObject continueButton;
@@ -34,9 +45,11 @@ public class ModeSelector : MonoBehaviour {
     public CreateProfileWindow createProfileWindow;
 
     private void Awake() {
+       // Debug.Break();
          foreach (RunSelectFigure f in runFigures) {
              f.modeSelector = this;
          }
+        GameManager.UnPause();
          dailyRun.modeSelector = this;
          customRun.modeSelector = this;
          questRun.modeSelector = this;
@@ -82,15 +95,20 @@ public class ModeSelector : MonoBehaviour {
     }
 
     public void HideAll() {
+        if (player != null) {
+            player.DisablePlayerWithoutUI();
+        }
         runSelector.gameObject.SetActive(false);
         MainMenu.gameObject.SetActive(false);
         profileChangeButton.gameObject.SetActive(false);
         changeWindow.gameObject.SetActive(false);
         createProfileWindow.gameObject.SetActive(false);
+        AbilityDescriptorMaster.SetActive(false); 
     }
 
     internal void SetMainMenu() {
         HideAll();
+        player.DisablePlayerWithoutUI();
         MainMenu.gameObject.SetActive(true);
         profileChangeButton.gameObject.SetActive(true);
         profileChangeButton.SetProfile(RoguelikeGameManager.currentProfile);
@@ -101,10 +119,18 @@ public class ModeSelector : MonoBehaviour {
     internal void Hover(RunSelectFigure runSelectFigure) {
         cursor.gameObject.SetActive(true);
         cursor.gameObject.transform.position = runSelectFigure.transform.position;
+        AbilityDescriptorMaster.gameObject.SetActive(true);
+        raceBox.SetRace(runSelectFigure.race);
+        raceAbilityBox.SetAbility(runSelectFigure.race.racialAbility);
+        abilityOneBox.SetAbility(runSelectFigure.abilities[0]);
+        abilityTwoBox.SetAbility(runSelectFigure.abilities[1]);
+        weaponBox.SetWeapon(runSelectFigure.weaponObject);
+
+
     }
 
     internal void HoverExit(RunSelectFigure runSelectFigure) {
-
+        AbilityDescriptorMaster.gameObject.SetActive(false);
     }
 
     public void GenerateRunners(RunSelectFigure f) {
@@ -112,6 +138,9 @@ public class ModeSelector : MonoBehaviour {
     }
 
     public void ShowRunMenu() {
+
+
+        //Debug.Break();
 
         UnityEngine.Random.InitState(RoguelikeGameManager.currentSeed.GetHashCode());
 

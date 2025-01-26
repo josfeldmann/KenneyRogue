@@ -28,4 +28,8 @@ public class RoguelikeGameManager
     internal static void GoToMapLevel() {
         SceneManager.LoadScene(SceneNames.MapLevel);
     }
+
+    internal static void GoToMainMenu() {
+        SceneManager.LoadScene(SceneNames.MainMenu);
+    }
 }

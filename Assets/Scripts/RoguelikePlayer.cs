@@ -65,7 +65,7 @@ public class RoguelikePlayer : StatUnit {
 
 
     public bool inCustomMovement = false;
-    
+
     public RaceObject raceObject;
     [Header("Weapon")]
     public Transform buttonGroupingObject;
@@ -73,8 +73,8 @@ public class RoguelikePlayer : StatUnit {
     public WeaponObject weaponObject;
     public AbilityButton weaponButton;
     public Weapon weapon;
-    
-    
+
+
     [Header("Abilities")]
     public List<AbilityObject> abilityObjects = new List<AbilityObject>();
     public AbilityButton abilityButtonprefab;
@@ -147,10 +147,10 @@ public class RoguelikePlayer : StatUnit {
         pausedPrompt.gameObject.SetActive(false);
         //transitioner.IntroTransition();
         healthManager.UpdateHP(0);
-        
+
         statemachine = new StateMachine<RoguelikePlayer>(new RoguelikePlayerMoveState(), this);
         onTakeDamage += healthManager.UpdateHP;
-       // onTakeDamage += FlashForDamage;
+        // onTakeDamage += FlashForDamage;
         onDeath += Die;
         setup = true;
         SetWeapon(weaponObject);
@@ -167,7 +167,7 @@ public class RoguelikePlayer : StatUnit {
         }
     }
 
-    
+
 
     public void SetRace(RaceObject race) {
         raceObject = race;
@@ -217,7 +217,7 @@ public class RoguelikePlayer : StatUnit {
 
             }
             amt++;
-            
+
         }
     }
 
@@ -228,7 +228,7 @@ public class RoguelikePlayer : StatUnit {
         if (items.Count <= 0) {
             itemTransform.gameObject.SetActive(false);
         } else {
-            itemTransform.gameObject.SetActive(true) ;
+            itemTransform.gameObject.SetActive(true);
         }
         for (int i = itemIcons.Count; i < items.Count; i++) {
             ItemIcon iIcon = Instantiate(itemIconPrefab, itemTransform);
@@ -248,6 +248,28 @@ public class RoguelikePlayer : StatUnit {
 
     bool canPause = true;
 
+    public void Pause() {
+        GameManager.Pause();
+        pausedPrompt.gameObject.SetActive(true);
+    }
+
+    public void Resume() {
+        pausedPrompt.gameObject.SetActive(false);
+        GameManager.UnPause();
+    }
+
+
+    public void DestroyPlayer() {
+        Debug.Log("DESTROYING PLAYER " + name);
+        players.Remove(this);
+        Destroy(gameObject);
+    }
+
+    public void MainMenuButton() {
+        RoguelikeGameManager.GoToMainMenu();
+        DestroyPlayer();
+    }
+
     private void Update() {
         if (!setup) {
             return;
@@ -255,11 +277,9 @@ public class RoguelikePlayer : StatUnit {
         if (canPause) {
             if (manager.pauseButtonDown) {
                 if (GameManager.paused) {
-                    pausedPrompt.gameObject.SetActive(false);
-                    GameManager.UnPause();
+                    Resume();
                 } else {
-                    GameManager.Pause();
-                    pausedPrompt.gameObject.SetActive(true);
+                    Pause();
                 }
             }
         }
@@ -282,11 +302,11 @@ public class RoguelikePlayer : StatUnit {
 
     }
 
-  
+
 
     public int currentNumberOfWeapons = 0;
 
-   
+
 
     public void FlashForDamage(float amt) {
         canTakeDamage = false;
@@ -316,7 +336,7 @@ public class RoguelikePlayer : StatUnit {
         GameManager.UnPause();
         canTakeDamage = false;
         statemachine.ChangeState(new RoguelikePlayerDoNothingState());
-      
+
         StartCoroutine(Dienumerator());
     }
 
@@ -329,12 +349,12 @@ public class RoguelikePlayer : StatUnit {
 
     public bool canWin = true;
 
- 
+
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.layer == Layers.hurtPlayer) {
             if (canTakeDamage) {
-               // pushBack = -(other.contacts[0].point - new Vector2(transform.position.x, transform.position.y)).normalized * lavaPushBack;
+                // pushBack = -(other.contacts[0].point - new Vector2(transform.position.x, transform.position.y)).normalized * lavaPushBack;
                 TakeDamage(1);
                 print("takeDamage");
             }
@@ -351,7 +371,7 @@ public class RoguelikePlayer : StatUnit {
 
             if (mousePoint.x <= transform.position.x) {
                 weapon.spriteRenderer.flipY = true;
-            } else  {
+            } else {
                 weapon.spriteRenderer.flipY = false;
             }
         }
@@ -406,14 +426,14 @@ public class RoguelikePlayer : StatUnit {
     public void MakeInvincibleAndImpassable() {
         bodyColiider.enabled = false;
         rb.isKinematic = true;
-        rb.velocity = Vector3.zero;
+        rb.linearVelocity = Vector3.zero;
         canTakeDamage = false;
     }
 
     public void MakeNotInvicible() {
         bodyColiider.enabled = true;
         rb.isKinematic = false;
-        rb.velocity = Vector3.zero;
+        rb.linearVelocity = Vector3.zero;
         canTakeDamage = true;
     }
 
@@ -448,7 +468,6 @@ public class RoguelikePlayer : StatUnit {
         statemachine = new StateMachine<RoguelikePlayer>(new RoguelikePlayerDisabledState(), this);
     }
 
-    
 }
 
 
@@ -456,12 +475,12 @@ public class RoguelikePlayerMoveState : State<RoguelikePlayer> {
 
     public override void Update(StateMachine<RoguelikePlayer> obj) {
         if (obj.target.manager.horizontal != 0 || obj.target.manager.vertical != 0) {
-            obj.target.rb.velocity = new Vector2(obj.target.manager.horizontal, obj.target.manager.vertical) * obj.target.baseMoveSpeed * (obj.target.currentStats.moveSpeed/100f);
+            obj.target.rb.linearVelocity = new Vector2(obj.target.manager.horizontal, obj.target.manager.vertical) * obj.target.baseMoveSpeed * (obj.target.currentStats.moveSpeed/100f);
         } else {
-            obj.target.rb.velocity = Vector2.zero;
+            obj.target.rb.linearVelocity = Vector2.zero;
         }
 
-        obj.target.rb.velocity += obj.target.pushBack;
+        obj.target.rb.linearVelocity += obj.target.pushBack;
         obj.target.DecreasePushBack();
 
         obj.target.AimRightHand();
@@ -476,13 +495,13 @@ public class RoguelikePlayerMoveState : State<RoguelikePlayer> {
 
 public class RoguelikePlayerDisabledState : State<RoguelikePlayer> {
     public override void Enter(StateMachine<RoguelikePlayer> obj) {
-        obj.target.rb.velocity = new Vector2();
+        obj.target.rb.linearVelocity = new Vector2();
     }
 }
 
 public class RoguelikePlayerDoNothingState : State<RoguelikePlayer> {
     public override void Update(StateMachine<RoguelikePlayer> obj) {
-        obj.target.rb.velocity = obj.target.pushBack;
+        obj.target.rb.linearVelocity = obj.target.pushBack;
         obj.target.DecreasePushBack();
         if (obj.target.sRenderer.transform.parent == obj.target.transform && obj.target.pushBack == Vector2.zero) {
             obj.target.sRenderer.transform.SetParent(obj.target.transform.parent);
